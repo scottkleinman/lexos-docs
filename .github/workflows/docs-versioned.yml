@@ -1,6 +1,14 @@
 name: Versioned Docs Receiver
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "doc_src/**"
+      - "pyproject.toml"
+      - "uv.lock"
+      - ".github/workflows/docs-versioned.yml"
   repository_dispatch:
     types: [lexos_docs_publish]
   workflow_dispatch:
@@ -108,6 +116,12 @@ jobs:
               echo "Unsupported repository_dispatch operation: ${operation}"
               exit 1
             fi
+          elif [[ "${trigger}" == "push" ]]; then
+            operation="push-sync"
+            source_ref="main"
+            docs_ref="${DOCS_SOURCE_BRANCH}"
+            version_label="${DEV_VERSION}"
+            alias_to_update="${DEV_VERSION}"
           else
             operation="${{ inputs.operation }}"
             source_ref="${{ inputs.source_ref }}"
@@ -116,6 +130,8 @@ jobs:
             if [[ "${operation}" == "backfill" ]]; then
               if [[ -n "${{ inputs.docs_ref }}" ]]; then
                 docs_ref="${{ inputs.docs_ref }}"
+              elif [[ "${source_ref}" == "main" ]]; then
+                docs_ref="${DOCS_SOURCE_BRANCH}"
               else
                 docs_ref="docs-${source_ref}"
               fi
