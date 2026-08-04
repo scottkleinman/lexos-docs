@@ -203,7 +203,7 @@ jobs:
 
       - name: Sync docs tooling dependencies
         working-directory: docs-src
-        run: uv sync
+        run: uv sync --group dev
 
       - name: Select docs config source (strict guard)
         id: docsctx
