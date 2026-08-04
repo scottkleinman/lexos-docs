@@ -5,6 +5,8 @@
 [![license](https://img.shields.io/github/license/scottkleinman/lexos)](https://img.shields.io/github/license/scottkleinman/lexos)
 [![Coverage](https://img.shields.io/badge/coverage-97%25-blue)](https://img.shields.io/badge/coverage-97%25-blue)
 
+## SMOKE-DOCS-2026-08-04
+
 ## Introduction
 
 The Lexos Python library reproduces and extends most of the text analysis tools in the <a href="http://lexos.wheatoncollege.edu/" target="_blank">Lexos web app</a>. Lexos is designed to implement many common text analysis procedures in a way that saves the user having to re-invent the wheel or figure out how to combine multiple Python packages to achieve a given result. It is intended to be used as a library in other projects to build backend functions for applications, but it can be used in standalone scripts or in Jupyter notebooks. As with the original web app, it is designed to accessible to entry-level users whilst offering power functionality for students and researchers, particularly in the Humanities. It is also designed to be as language-agnostic as possible so that it can be used for a wide variety of historical and under-resourced languages.
