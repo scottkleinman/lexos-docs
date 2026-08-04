@@ -251,6 +251,23 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Sync local gh-pages with remote
+        if: ${{ steps.ctx.outputs.push_to_pages == 'true' }}
+        working-directory: docs-src
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Ensure local gh-pages starts from current remote tip to avoid
+          # non-fast-forward push failures when remote has newer commits.
+          if git ls-remote --heads pages gh-pages >/dev/null 2>&1; then
+            git fetch --no-tags pages gh-pages
+            if git show-ref --verify --quiet refs/heads/gh-pages; then
+              git branch -f gh-pages FETCH_HEAD
+            else
+              git branch gh-pages FETCH_HEAD
+            fi
+          fi
+
       - name: Validate lexos import path
         if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'release' || steps.ctx.outputs.operation == 'release-tag' || steps.ctx.outputs.operation == 'backfill' || steps.ctx.outputs.operation == 'dry-run' }}
         working-directory: docs-src
