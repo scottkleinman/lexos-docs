@@ -231,6 +231,9 @@ jobs:
             echo "Missing required secret: LEXOS_PAGES_PAT"
             exit 1
           fi
+          # actions/checkout injects an auth extraheader using GITHUB_TOKEN.
+          # Remove it so pushes use the PAT configured in the pages remote URL.
+          git config --local --unset-all http.https://github.com/.extraheader || true
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git remote add pages "https://x-access-token:${LEXOS_PAGES_PAT}@github.com/${LEXOS_REPO}.git" || git remote set-url pages "https://x-access-token:${LEXOS_PAGES_PAT}@github.com/${LEXOS_REPO}.git"
