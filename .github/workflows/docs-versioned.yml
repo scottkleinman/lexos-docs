@@ -223,11 +223,17 @@ jobs:
         if: ${{ steps.ctx.outputs.push_to_pages == 'true' }}
         working-directory: docs-src
         shell: bash
+        env:
+          LEXOS_PAGES_PAT: ${{ secrets.LEXOS_PAGES_PAT }}
         run: |
           set -euo pipefail
+          if [[ -z "${LEXOS_PAGES_PAT}" ]]; then
+            echo "Missing required secret: LEXOS_PAGES_PAT"
+            exit 1
+          fi
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git remote add pages "https://x-access-token:${{ secrets.LEXOS_PAGES_PAT }}@github.com/${LEXOS_REPO}.git" || git remote set-url pages "https://x-access-token:${{ secrets.LEXOS_PAGES_PAT }}@github.com/${LEXOS_REPO}.git"
+          git remote add pages "https://x-access-token:${LEXOS_PAGES_PAT}@github.com/${LEXOS_REPO}.git" || git remote set-url pages "https://x-access-token:${LEXOS_PAGES_PAT}@github.com/${LEXOS_REPO}.git"
 
       - name: Deploy dev or release version
         if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'release' || steps.ctx.outputs.operation == 'release-tag' || steps.ctx.outputs.operation == 'dry-run' }}
