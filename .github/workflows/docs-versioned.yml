@@ -178,7 +178,7 @@ jobs:
           fetch-depth: 0
 
       - name: Checkout lexos source ref
-        if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'release' || steps.ctx.outputs.operation == 'release-tag' || steps.ctx.outputs.operation == 'backfill' }}
+        if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'release' || steps.ctx.outputs.operation == 'release-tag' || steps.ctx.outputs.operation == 'backfill' || steps.ctx.outputs.operation == 'dry-run' }}
         uses: actions/checkout@v5
         with:
           repository: ${{ env.LEXOS_REPO }}
