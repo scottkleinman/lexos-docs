@@ -55,7 +55,7 @@ jobs:
           set -euo pipefail
 
           event_name="${{ github.event_name }}"
-          operation="push-sync"
+          operation="dr-run"
           source_ref="main"
           is_prerelease="false"
           tag_name=""
@@ -90,12 +90,11 @@ jobs:
       - name: Send repository dispatch to docs repo
         shell: bash
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.LEXOS_DOCS_REPO_TOKEN }}
         run: |
           set -euo pipefail
 
           payload="$(jq -n \
-            --arg event_name "${{ steps.payload.outputs.event_name }}" \
             --arg operation "${{ steps.payload.outputs.operation }}" \
             --arg source_ref "${{ steps.payload.outputs.source_ref }}" \
             --arg is_prerelease "${{ steps.payload.outputs.is_prerelease }}" \
@@ -107,9 +106,8 @@ jobs:
             --arg reason "${{ github.event_name == 'workflow_dispatch' && inputs.reason || '' }}" \
             --arg change_summary "${{ github.event_name == 'workflow_dispatch' && inputs.change_summary || '' }}" \
             '{
-              event_type: "lexos_docs_publish",
-              client_payload: {
-                event_name: $event_name,
+                event_type: "lexos_docs_publish",
+                client_payload: {
                 operation: $operation,
                 source_ref: $source_ref,
                 is_prerelease: $is_prerelease,
@@ -120,15 +118,22 @@ jobs:
                 source_run_id: $run_id,
                 reason: $reason,
                 change_summary: $change_summary
-              }
+                }
             }')"
 
-          curl -sS -X POST \
+          http_code="$(curl -sS -o dispatch_response.json -w "%{http_code}" -X POST \
             -H "Authorization: Bearer ${GH_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${TARGET_DOCS_REPO}/dispatches" \
-            -d "${payload}"
+            -d "${payload}")"
 
+          if [[ "${http_code}" != "204" ]]; then
+            echo "Dispatch failed with HTTP ${http_code}"
+            cat dispatch_response.json
+            exit 1
+          fi
+
+          echo "Dispatch accepted by ${TARGET_DOCS_REPO}"
       - name: Publish run summary
         shell: bash
         run: |
