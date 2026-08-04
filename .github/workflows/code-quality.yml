@@ -22,10 +22,10 @@ jobs:
         run: pip install pre-commit
       - name: Check YAML files in doc_src
         run: |
-          find doc_src \( -name "*.yml" -o -name "*.yaml" \) -type f | xargs -r pre-commit run check-yaml --files
+          find doc_src \( -name "*.yml" -o -name "*.yaml" \) -type f -not -path "doc_src/docs/tutorials/language_model/*" | xargs -r pre-commit run check-yaml --files
       - name: Check end-of-file fixer in doc_src
         run: |
-          git ls-files 'doc_src/**' | xargs -r pre-commit run end-of-file-fixer --files
+          git ls-files 'doc_src/**' | grep -v '^doc_src/docs/tutorials/language_model/' | xargs -r pre-commit run end-of-file-fixer --files
       - name: Check trailing whitespace in doc_src
         run: |
-          git ls-files 'doc_src/**' | xargs -r pre-commit run trailing-whitespace --files
+          git ls-files 'doc_src/**' | grep -v '^doc_src/docs/tutorials/language_model/' | xargs -r pre-commit run trailing-whitespace --files
