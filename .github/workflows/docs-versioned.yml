@@ -235,12 +235,27 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git remote add pages "https://x-access-token:${LEXOS_PAGES_PAT}@github.com/${LEXOS_REPO}.git" || git remote set-url pages "https://x-access-token:${LEXOS_PAGES_PAT}@github.com/${LEXOS_REPO}.git"
 
+      - name: Validate lexos import path
+        if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'release' || steps.ctx.outputs.operation == 'release-tag' || steps.ctx.outputs.operation == 'backfill' || steps.ctx.outputs.operation == 'dry-run' }}
+        working-directory: docs-src
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}/source/src
+        run: |
+          set -euo pipefail
+          test -d "${GITHUB_WORKSPACE}/source/src/lexos"
+          uv run --no-sync python - <<'PY'
+          import lexos
+          print(f"lexos import ok: {lexos.__file__}")
+          PY
+
       - name: Deploy dev or release version
         if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'release' || steps.ctx.outputs.operation == 'release-tag' || steps.ctx.outputs.operation == 'dry-run' }}
         working-directory: docs-src
         shell: bash
         env:
           MKDOCSTRINGS_PYTHON_PATH: ${{ github.workspace }}/source/src
+          PYTHONPATH: ${{ github.workspace }}/source/src
         run: |
           set -euo pipefail
           version="${{ steps.ctx.outputs.version_label }}"
@@ -263,6 +278,7 @@ jobs:
         shell: bash
         env:
           MKDOCSTRINGS_PYTHON_PATH: ${{ github.workspace }}/source/src
+          PYTHONPATH: ${{ github.workspace }}/source/src
         run: |
           set -euo pipefail
           uv run --no-sync --with mike mike deploy --config-file "${{ steps.docsctx.outputs.docs_config_path }}" --remote pages --push "${{ steps.ctx.outputs.version_label }}"
