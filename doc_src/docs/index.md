@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/github/license/scottkleinman/lexos)](https://img.shields.io/github/license/scottkleinman/lexos)
 [![Coverage](https://img.shields.io/badge/coverage-97%25-blue)](https://img.shields.io/badge/coverage-97%25-blue)
 
-## SMOKE-DOCS-2026-08-04 Test 3
+## SMOKE-DOCS-2026-08-04 Test 4
 
 ## Introduction
 
