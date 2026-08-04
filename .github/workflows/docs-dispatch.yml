@@ -55,7 +55,7 @@ jobs:
           set -euo pipefail
 
           event_name="${{ github.event_name }}"
-          operation="dr-run"
+          operation="dry-run"
           source_ref="main"
           is_prerelease="false"
           tag_name=""
