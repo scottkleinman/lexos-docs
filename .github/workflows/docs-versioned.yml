@@ -232,7 +232,18 @@ jobs:
             exit 1
           fi
           git remote add pages "https://x-access-token:${LEXOS_PAGES_PAT}@github.com/${LEXOS_REPO}.git" || git remote set-url pages "https://x-access-token:${LEXOS_PAGES_PAT}@github.com/${LEXOS_REPO}.git"
+      - name: Configure pages remote
+        working-directory: docs-src
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          git remote add pages "https://x-access-token:${{ secrets.LEXOS_PAGES_PAT }}@github.com/scottkleinman/lexos.git" \
+            || git remote set-url pages "https://x-access-token:${{ secrets.LEXOS_PAGES_PAT }}@github.com/scottkleinman/lexos.git"
+
+          git ls-remote pages >/dev/null
       - name: Configure git identity for mike
         working-directory: docs-src
         shell: bash
