@@ -97,15 +97,13 @@ jobs:
               version_label="${DEV_VERSION}"
               alias_to_update="${DEV_VERSION}"
             elif [[ "${operation}" == "release" || "${operation}" == "release-tag" ]]; then
-              docs_ref="docs-${source_ref}"
-              version_label="${source_ref}"
-              update_latest_alias="true"
-              if [[ "${prerelease}" == "true" ]]; then
-                alias_to_update="${PRERELEASE_ALIAS}"
-              else
-                alias_to_update="${STABLE_ALIAS}"
-                update_default="true"
-              fi
+              # Keep a single clear publish path: treat release events like mainline
+              # push-sync to avoid dependence on historical docs-* snapshots.
+              operation="push-sync"
+              source_ref="main"
+              docs_ref="${DOCS_SOURCE_BRANCH}"
+              version_label="${DEV_VERSION}"
+              alias_to_update="${DEV_VERSION}"
             else
               echo "Unsupported repository_dispatch operation: ${operation}"
               exit 1
