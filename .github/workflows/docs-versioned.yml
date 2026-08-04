@@ -71,7 +71,7 @@ jobs:
           set -euo pipefail
 
           trigger="${{ github.event_name }}"
-          operation=""
+          operation="dry-run"
           source_ref=""
           docs_ref=""
           version_label=""
