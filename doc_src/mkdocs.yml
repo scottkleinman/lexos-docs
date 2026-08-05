@@ -264,6 +264,9 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
+          paths:
+            - ../../lexos/src
+            - ../../source/src
           options:
             # docstring_options:
             #   ignore_init_summary: true

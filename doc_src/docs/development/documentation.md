@@ -18,6 +18,7 @@ To preview changes to the documentation, serve it locally with
 
 ```bash
 cd lexos/doc_src
+uv sync --no-install-project
 uv run mkdocs serve
 ```
 
@@ -310,4 +311,26 @@ cd doc_src
 uv run mkdocs build
 ```
 
-For API docs resolution during local tests, ensure source files are available in `../src` or provide `MKDOCSTRINGS_PYTHON_PATH`.
+For API docs resolution during local tests, `mkdocs.yml` now includes default source path fallbacks for both local sibling clones (`../../lexos/src`) and CI checkout layout (`../../source/src`).
+
+If your local checkout layout is different, override it explicitly:
+
+```bash
+cd lexos-docs/doc_src
+MKDOCSTRINGS_PYTHON_PATH=/absolute/path/to/lexos/src PYTHONPATH=/absolute/path/to/lexos/src uv run mkdocs serve
+```
+
+### Troubleshooting Local Import Paths
+
+If `mkdocs serve` or `mkdocs build` reports `ImportError` for `lexos.*`, first verify that Python can import `lexos` from your chosen source path:
+
+```bash
+cd lexos-docs/doc_src
+MKDOCSTRINGS_PYTHON_PATH=/absolute/path/to/lexos/src PYTHONPATH=/absolute/path/to/lexos/src uv run python -c "import lexos; print(lexos.__file__)"
+```
+
+If the command fails, fix the path and try again. If it succeeds, rerun:
+
+```bash
+uv run mkdocs serve
+```
