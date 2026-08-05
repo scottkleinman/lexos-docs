@@ -55,8 +55,7 @@ nav:
         - Getting Training Data: user_guide/language_model/training_data.md
         - Choosing and Setting Up Base Models: user_guide/language_model/base_models.md
         - Tuning Training Settings: user_guide/language_model/training_settings.md
-  - Tutorials:
-      - Overview: tutorials/index.md
+  - Tutorials: tutorials/index.md
   - API:
       - Overview: api/index.md
       - cluster:
