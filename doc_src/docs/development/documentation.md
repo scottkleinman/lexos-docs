@@ -201,6 +201,28 @@ Manual runs require:
 
 If required inputs are missing, the run fails.
 
+### Baseline and Rollback Guardrails
+
+Before making workflow or dependency changes, capture a baseline from one dry-run and one real publish run summary:
+
+1. Trigger
+2. Operation
+3. Source ref
+4. Docs ref
+5. Version label
+6. Push to `gh-pages`
+
+Also capture timing for:
+
+1. Total job duration
+2. Install section duration (`Install uv`, `Install Python`, `Sync docs tooling dependencies`)
+
+If a streamlining change breaks publish behavior:
+
+1. Revert `.github/workflows/docs-versioned.yml`, `pyproject.toml`, and `uv.lock` to their previous working revisions.
+2. Rerun `workflow_dispatch` with `operation=dry-run`.
+3. Resume optimization only after baseline behavior is restored.
+
 ### Cutover Validation Sequence
 
 To complete cutover safely, run both validations in this order:
@@ -283,7 +305,7 @@ Before changing deployment logic, verify docs build locally:
 
 ```bash
 cd lexos
-uv sync --group dev
+uv sync --group docs-ci --no-install-project
 cd doc_src
 uv run mkdocs build
 ```

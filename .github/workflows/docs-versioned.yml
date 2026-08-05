@@ -98,15 +98,8 @@ jobs:
             source_ref="${{ github.event.client_payload.source_ref }}"
             prerelease="${{ github.event.client_payload.is_prerelease }}"
 
-            if [[ "${operation}" == "push-sync" || "${operation}" == "manual-dispatch" ]]; then
-              operation="push-sync"
-              source_ref="main"
-              docs_ref="${DOCS_SOURCE_BRANCH}"
-              version_label="${DEV_VERSION}"
-              alias_to_update="${DEV_VERSION}"
-            elif [[ "${operation}" == "release" || "${operation}" == "release-tag" ]]; then
-              # Keep a single clear publish path: treat release events like mainline
-              # push-sync to avoid dependence on historical docs-* snapshots.
+            if [[ "${operation}" == "push-sync" || "${operation}" == "manual-dispatch" || "${operation}" == "release" || "${operation}" == "release-tag" ]]; then
+              # Keep a single clear publish path for all automated dispatches.
               operation="push-sync"
               source_ref="main"
               docs_ref="${DOCS_SOURCE_BRANCH}"
@@ -192,7 +185,7 @@ jobs:
           fetch-depth: 0
 
       - name: Checkout lexos source ref
-        if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'release' || steps.ctx.outputs.operation == 'release-tag' || steps.ctx.outputs.operation == 'backfill' || steps.ctx.outputs.operation == 'dry-run' }}
+        if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'backfill' || steps.ctx.outputs.operation == 'dry-run' }}
         uses: actions/checkout@v5
         with:
           repository: ${{ env.LEXOS_REPO }}
@@ -217,7 +210,7 @@ jobs:
 
       - name: Sync docs tooling dependencies
         working-directory: docs-src
-        run: uv sync --group dev --no-install-project
+        run: uv sync --group docs-ci --no-install-project
 
       - name: Select docs config source (strict guard)
         id: docsctx
@@ -283,7 +276,7 @@ jobs:
           fi
 
       - name: Validate lexos import path
-        if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'release' || steps.ctx.outputs.operation == 'release-tag' || steps.ctx.outputs.operation == 'backfill' || steps.ctx.outputs.operation == 'dry-run' }}
+        if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'backfill' || steps.ctx.outputs.operation == 'dry-run' }}
         working-directory: docs-src
         shell: bash
         env:
@@ -297,7 +290,7 @@ jobs:
           PY
 
       - name: Deploy dev or release version
-        if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'release' || steps.ctx.outputs.operation == 'release-tag' || steps.ctx.outputs.operation == 'dry-run' }}
+        if: ${{ steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'dry-run' }}
         working-directory: docs-src
         shell: bash
         env:
@@ -331,7 +324,7 @@ jobs:
           uv run --no-sync --with mike mike deploy --config-file "${{ steps.docsctx.outputs.docs_config_path }}" --remote pages --push "${{ steps.ctx.outputs.version_label }}"
 
       - name: Ensure default version exists
-        if: ${{ steps.ctx.outputs.push_to_pages == 'true' && (steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'release' || steps.ctx.outputs.operation == 'release-tag' || steps.ctx.outputs.operation == 'backfill') }}
+        if: ${{ steps.ctx.outputs.push_to_pages == 'true' && (steps.ctx.outputs.operation == 'push-sync' || steps.ctx.outputs.operation == 'backfill') }}
         working-directory: docs-src
         shell: bash
         run: |
@@ -390,6 +383,11 @@ jobs:
             echo "- Alias updated: ${{ steps.ctx.outputs.alias_to_update }}"
             echo "- Updated latest alias: ${{ steps.ctx.outputs.update_latest_alias }}"
             echo "- Push to gh-pages: ${{ steps.ctx.outputs.push_to_pages }}"
+            if [[ "${{ steps.ctx.outputs.operation }}" == "push-sync" ]]; then
+              echo "- Publish mode: automated dev-only"
+            else
+              echo "- Publish mode: manual operation"
+            fi
             if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
               echo "- Reason: ${{ inputs.reason }}"
               echo "- Change summary: ${{ inputs.change_summary }}"
