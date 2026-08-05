@@ -31,6 +31,7 @@
     rendering:
       show_root_heading: true
       heading_level: 3
+
 ### ::: lexos.cluster.bootstrap_consensus.BCT._serialize_labels
 
     rendering:
