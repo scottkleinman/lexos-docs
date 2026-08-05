@@ -38,7 +38,7 @@ nav:
         - The Corpus module: user_guide/corpus/index.md
         - Working with Records: user_guide/corpus/working_with_records.md
       - Analyzing Documents:
-        - Overview: user_guide/analyzing_documents.md
+        - Overview: user_guide/analyzing_documents/index.md
         - Clustering:
           - Overview: user_guide/clustering.md
           - Hierarchical Agglomerative Clustering: user_guide/cluster/hierarchical-agglomerative-clustering.md
@@ -57,10 +57,6 @@ nav:
         - Tuning Training Settings: user_guide/language_model/training_settings.md
   - Tutorials:
       - Overview: tutorials/index.md
-      - Language Model:
-          - Overview: tutorials/language_model/tutorial.ipynb
-          - Advanced Workflow: tutorials/language_model/advanced_workflow.ipynb
-          - Transformer Training: tutorials/language_model/transformer_tutorial.ipynb
   - API:
       - Overview: api/index.md
       - cluster:
