@@ -2,11 +2,11 @@ name: Code Quality
 on:
   push:
     paths:
-      - 'doc_src/**'
+      - 'src/**'
       - '.github/workflows/code-quality.yml'
   pull_request:
     paths:
-      - 'doc_src/**'
+      - 'src/**'
       - '.github/workflows/code-quality.yml'
 
 jobs:
@@ -20,12 +20,12 @@ jobs:
           python-version: '3.x'
       - name: Install pre-commit
         run: pip install pre-commit
-      - name: Check YAML files in doc_src
+      - name: Check YAML files in src
         run: |
-          find doc_src \( -name "*.yml" -o -name "*.yaml" \) -type f -not -path "doc_src/docs/tutorials/language_model/*" | xargs -r pre-commit run check-yaml --files
-      - name: Check end-of-file fixer in doc_src
+          find src \( -name "*.yml" -o -name "*.yaml" \) -type f -not -path "src/docs/tutorials/language_model/*" | xargs -r pre-commit run check-yaml --files
+      - name: Check end-of-file fixer in src
         run: |
-          git ls-files 'doc_src/**' | grep -v '^doc_src/docs/tutorials/language_model/' | xargs -r pre-commit run end-of-file-fixer --files
-      - name: Check trailing whitespace in doc_src
+          git ls-files 'src/**' | grep -v '^src/docs/tutorials/language_model/' | xargs -r pre-commit run end-of-file-fixer --files
+      - name: Check trailing whitespace in src
         run: |
-          git ls-files 'doc_src/**' | grep -v '^doc_src/docs/tutorials/language_model/' | xargs -r pre-commit run trailing-whitespace --files
+          git ls-files 'src/**' | grep -v '^src/docs/tutorials/language_model/' | xargs -r pre-commit run trailing-whitespace --files

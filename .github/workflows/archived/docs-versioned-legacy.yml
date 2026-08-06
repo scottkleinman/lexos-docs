@@ -42,7 +42,7 @@ name: Versioned Docs (Legacy Fallback)
         default: false
         type: boolean
       docs_source_branch:
-        description: "Branch that contains doc_src and docs config"
+        description: "Branch that contains src and docs config"
         required: true
         default: "docs-source"
         type: string
@@ -217,12 +217,12 @@ jobs:
           docs_config_path=""
           docs_source_used="${{ steps.ctx.outputs.docs_ref }}"
 
-          if [[ -f "${GITHUB_WORKSPACE}/docs-src/doc_src/zensical.yml" ]]; then
-            docs_config_path="doc_src/zensical.yml"
-          elif [[ -f "${GITHUB_WORKSPACE}/docs-src/doc_src/mkdocs.yml" ]]; then
-            docs_config_path="doc_src/mkdocs.yml"
+          if [[ -f "${GITHUB_WORKSPACE}/docs-src/src/zensical.yml" ]]; then
+            docs_config_path="src/zensical.yml"
+          elif [[ -f "${GITHUB_WORKSPACE}/docs-src/src/mkdocs.yml" ]]; then
+            docs_config_path="src/mkdocs.yml"
           else
-            echo "Docs ref '${{ steps.ctx.outputs.docs_ref }}' must contain doc_src/zensical.yml or doc_src/mkdocs.yml."
+            echo "Docs ref '${{ steps.ctx.outputs.docs_ref }}' must contain src/zensical.yml or src/mkdocs.yml."
             echo "Create matching docs-* tags/refs or provide workflow_dispatch input docs_ref."
             exit 1
           fi
@@ -368,7 +368,7 @@ jobs:
             echo "- Docs ref: ${{ steps.ctx.outputs.docs_ref }}"
             echo "- Docs source selected: ${{ steps.docsctx.outputs.docs_source_used }}"
             echo "- Docs config path: ${{ steps.docsctx.outputs.docs_config_path }}"
-            echo "- Guard mode: strict (docs ref must contain doc_src/zensical.yml or doc_src/mkdocs.yml)"
+            echo "- Guard mode: strict (docs ref must contain src/zensical.yml or src/mkdocs.yml)"
             echo "- Version label: ${{ steps.ctx.outputs.version_label }}"
             echo "- Alias updated: ${{ steps.ctx.outputs.alias_to_update }}"
             echo "- latest updated: ${{ steps.ctx.outputs.update_latest_alias }}"

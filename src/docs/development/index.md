@@ -18,7 +18,7 @@ Please consider adding a GitHub label to your post to help us categorize the iss
 
 ## Contributing to the Code Base or Documentation
 
-The Lexos source code and documentation currently reside in the same repository under the `lexos/src` and `lexos/doc_src` folders respectively. To work with them, you will need to fork and clone the repository and work with it in a local development environment. When you are ready, you can submit the code as a pull request to the main Lexos repository.
+The Lexos source code and documentation currently reside in the same repository under the `lexos/src` and `lexos/src` folders respectively. To work with them, you will need to fork and clone the repository and work with it in a local development environment. When you are ready, you can submit the changes as a pull request to the main Lexos repository.
 
 ### Fork and Clone the Repository
 

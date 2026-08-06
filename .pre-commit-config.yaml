@@ -4,11 +4,11 @@ repos:
   hooks:
   - id: check-yaml
     args: ['--unsafe']
-    files: ^doc_src/
-    exclude: ^doc_src/docs/tutorials/language_model/
+    files: ^src/
+    exclude: ^src/docs/tutorials/language_model/
   - id: end-of-file-fixer
-    files: ^doc_src/
-    exclude: ^doc_src/docs/tutorials/language_model/
+    files: ^src/
+    exclude: ^src/docs/tutorials/language_model/
   - id: trailing-whitespace
-    files: ^doc_src/
-    exclude: ^doc_src/docs/tutorials/language_model/
+    files: ^src/
+    exclude: ^src/docs/tutorials/language_model/

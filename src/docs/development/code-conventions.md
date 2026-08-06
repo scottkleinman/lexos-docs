@@ -28,7 +28,7 @@ For the purpose of this guide, a "Python header" is the beginning of a Python fi
 
 1. The docstring must be enclosed in three double quotation marks, the first line of which must begin with the name of the file and which must end with a period.
 2. The file must contain a line "Last Updated: " followed by a date.
-3. Code files in the `doc_src` folder must additionally contain a line reading "Last Tested: ", followed by a date.
+3. Code files in the `src` folder must additionally contain a line reading "Last Tested: ", followed by a date.
 4. The date format should be something like "November 5, 2025". If you use a different format, `pre-commit` will try to fix it but will generate an error if it cannot do so (see [pre-commit](#using-pre-commit)).
 5. Code files in the `tests` folder must additionally contain a line "Coverage: " followed by a percentage and a period. If coverage is not 100%, the period must be followed by a space and "Missing: ". This should be followed by a comma-separated list of lines in the module being tests that are not covered by the tests. The list may contain ranges like "105-107".
 

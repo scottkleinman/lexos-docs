@@ -17,20 +17,20 @@ The documentation website is static website generated with <a href="https://www.
 To preview changes to the documentation, serve it locally with
 
 ```bash
-cd lexos/doc_src
+cd lexos/src
 uv sync --no-install-project
 uv run mkdocs serve
 ```
 
 This will start a local server and automatically build a `docs` folder in the project root to contain the built website. If you do not want to serve the site, you can call `uv run mkdocs build`. However, in most case you will want to serve it to observe your changes in a web browser.
 
-If you make a new page, you must add it to the `doc_src/docs/mkdocs.yml` configuration. If the page is under an `overview.md` page, check to see if the `overview.md` page has discussion or a table of contents where you might want to link to the new page. Note that the `mkdocs.yml` file is very easy to corrupt, so **be careful**.
+If you make a new page, you must add it to the `src/docs/mkdocs.yml` configuration. If the page is under an `overview.md` page, check to see if the `overview.md` page has discussion or a table of contents where you might want to link to the new page. Note that the `mkdocs.yml` file is very easy to corrupt, so **be careful**.
 
-When building the documentation, errors and warnings will be printed to the console. Please check and resolve them before making a pull request. If there are many warnings, it can be helpful to redirect the console output to a file. You can do this with `uv run mkdocs build > build_full.log 2>&1` and then inspect the generated `build_full.log` file, which will be saved in the `doc_src` folder. **Make sure that you don't push this file to the repository.**
+When building the documentation, errors and warnings will be printed to the console. Please check and resolve them before making a pull request. If there are many warnings, it can be helpful to redirect the console output to a file. You can do this with `uv run mkdocs build > build_full.log 2>&1` and then inspect the generated `build_full.log` file, which will be saved in the `src` folder. **Make sure that you don't push this file to the repository.**
 
-Whether you make a change to an existing page or add a new one, your text should follow <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank">GitHub Markdown conventions</a>, especially for code and code blocks. To see examples, you may find it helpful to review the current documentation files in the `doc_src/docs` folder or via `mkdocs serve`.
+Whether you make a change to an existing page or add a new one, your text should follow <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank">GitHub Markdown conventions</a>, especially for code and code blocks. To see examples, you may find it helpful to review the current documentation files in the `src/docs` folder or via `mkdocs serve`.
 
-Before you make a pull request, check that the site builds properly in your local environment and make sure that your content does not contain any Markdown linting errors Lexos uses the default Markdown linting rules of of <a href="https://github.com/DavidAnson/markdownlint" target="_blank">Markdownlint</a>, except as specified in the `doc_src/.markdownlint.json` file.
+Before you make a pull request, check that the site builds properly in your local environment and make sure that your content does not contain any Markdown linting errors Lexos uses the default Markdown linting rules of of <a href="https://github.com/DavidAnson/markdownlint" target="_blank">Markdownlint</a>, except as specified in the `src/.markdownlint.json` file.
 
 !!! note
     It is recommended that you install the Markdownlint extension in VS Code for linting Markdown files when producing documentation. The Markdownlint extension will show you any errors.
@@ -101,7 +101,7 @@ To create direct links to individual classes, properties, and methods anywhere i
 - To link to `BaseLoader.data`, use `base_loader/#lexos.io.base_loader.BaseLoader.data`
 - To link to `BaseLoader.load_dataset`, use `base_loader/#lexos.io.base_loader.BaseLoader.load_dataset`
 
-If you create API documentation for a new module, be sure to add it to the HTML table in `doc_src/docs/api/index.md`. When you add another row, make sure that you edit the `row-even` and `row-odd` class names so that the table striping alternates in the generated output.
+If you create API documentation for a new module, be sure to add it to the HTML table in `src/docs/api/index.md`. When you add another row, make sure that you edit the `row-even` and `row-odd` class names so that the table striping alternates in the generated output.
 
 ## The Tutorials
 
@@ -152,7 +152,7 @@ As part of the split-repo migration, `lexos` dispatches docs publishing events t
 
 ### Branch Responsibilities
 
-1. `docs-source` stores authored docs and MkDocs configuration (`doc_src`).
+1. `docs-source` stores authored docs and MkDocs configuration (`src`).
 2. `gh-pages` stores only rendered documentation output and mike metadata.
 3. `main` stores Python source code and triggers development docs updates.
 4. `docs-v*` tags (for example `docs-v0.1.0-beta.31`) are the canonical historical docs snapshots.
@@ -307,7 +307,7 @@ Before changing deployment logic, verify docs build locally:
 ```bash
 cd lexos
 uv sync --group docs-ci --no-install-project
-cd doc_src
+cd src
 uv run mkdocs build
 ```
 
@@ -316,7 +316,7 @@ For API docs resolution during local tests, `mkdocs.yml` now includes default so
 If your local checkout layout is different, override it explicitly:
 
 ```bash
-cd lexos-docs/doc_src
+cd lexos-docs/src
 MKDOCSTRINGS_PYTHON_PATH=/absolute/path/to/lexos/src PYTHONPATH=/absolute/path/to/lexos/src uv run mkdocs serve
 ```
 
@@ -325,7 +325,7 @@ MKDOCSTRINGS_PYTHON_PATH=/absolute/path/to/lexos/src PYTHONPATH=/absolute/path/t
 If `mkdocs serve` or `mkdocs build` reports `ImportError` for `lexos.*`, first verify that Python can import `lexos` from your chosen source path:
 
 ```bash
-cd lexos-docs/doc_src
+cd lexos-docs/src
 MKDOCSTRINGS_PYTHON_PATH=/absolute/path/to/lexos/src PYTHONPATH=/absolute/path/to/lexos/src uv run python -c "import lexos; print(lexos.__file__)"
 ```
 

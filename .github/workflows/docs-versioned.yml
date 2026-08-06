@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "doc_src/**"
+      - "src/**"
       - "pyproject.toml"
       - "uv.lock"
       - ".github/workflows/docs-versioned.yml"
@@ -217,10 +217,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [[ -f "${GITHUB_WORKSPACE}/docs-src/doc_src/zensical.yml" ]]; then
-            echo "docs_config_path=doc_src/zensical.yml" >> "$GITHUB_OUTPUT"
-          elif [[ -f "${GITHUB_WORKSPACE}/docs-src/doc_src/mkdocs.yml" ]]; then
-            echo "docs_config_path=doc_src/mkdocs.yml" >> "$GITHUB_OUTPUT"
+          if [[ -f "${GITHUB_WORKSPACE}/docs-src/src/zensical.yml" ]]; then
+            echo "docs_config_path=src/zensical.yml" >> "$GITHUB_OUTPUT"
+          elif [[ -f "${GITHUB_WORKSPACE}/docs-src/src/mkdocs.yml" ]]; then
+            echo "docs_config_path=src/mkdocs.yml" >> "$GITHUB_OUTPUT"
           else
             echo "Missing docs config in selected docs ref"
             exit 1
