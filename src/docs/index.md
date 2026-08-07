@@ -25,7 +25,7 @@ And more!
 
 ## Project Status
 
-The Lexos API is currently in beta. Most of the core functionality of the Lexos web app, along with new features, has been implemented and documented. As of January 2026, the API is considered feature complete and stable for general use, but some rough edges remain. Feedback is welcome.
+The Lexos API is currently in beta. Most of the core functionality of the Lexos web app, along with new features, has been implemented and documented. As of August 2027, the API is considered feature complete and stable for general use, but some rough edges remain. Feedback is welcome.
 
 I will continue to fix bugs and improve the documentation as issues arise, but no major new features are planned at this time. The beta release coincides with at a time when the landscape of digital tools is rapidly evolving and AI-assisted coding is becoming more prevalent. I am waiting to see whether there is significant adoption of the Lexos library before investing more time in developing new features. If you like Lexos, you can help by requesting new features in the [GitHub issues](https://github.com/scottkleinman/uv_lexos/issues){target="_blank"} (labelled as "enhancement") or [contributing](development/index.md) them yourself.
 
