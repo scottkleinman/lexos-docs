@@ -41,11 +41,6 @@ name: Versioned Docs (Legacy Fallback)
         required: true
         default: false
         type: boolean
-      docs_source_branch:
-        description: "Branch that contains src and docs config"
-        required: true
-        default: "docs-source"
-        type: string
       docs_ref:
         description: "Optional docs ref override (branch/tag/SHA). For backfill, defaults to docs-<source_ref>"
         required: false
@@ -68,7 +63,6 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  DEFAULT_DOCS_SOURCE_BRANCH: docs-source
   DEV_VERSION: dev
   STABLE_ALIAS: stable
   PRERELEASE_ALIAS: stable-beta
@@ -87,12 +81,11 @@ jobs:
           event_name="${{ github.event_name }}"
           operation=""
           source_ref=""
-          docs_ref=""
+          docs_ref="main"
           version_label=""
           alias_to_update=""
           update_latest_alias="false"
           update_default="false"
-          docs_source_branch="${DEFAULT_DOCS_SOURCE_BRANCH}"
 
           if [[ "${event_name}" == "push" ]]; then
             if [[ "${GITHUB_REF}" == refs/tags/v* ]]; then
@@ -112,18 +105,16 @@ jobs:
             else
               operation="push-sync"
               source_ref="main"
-              docs_ref="${docs_source_branch}"
+              docs_ref="main"
               version_label="${DEV_VERSION}"
               alias_to_update="${DEV_VERSION}"
             fi
           else
             operation="${{ inputs.operation }}"
             source_ref="${{ inputs.source_ref }}"
-            docs_source_branch="${{ inputs.docs_source_branch }}"
-            docs_ref="${docs_source_branch}"
+            docs_ref="${{ inputs.docs_ref }}"
 
             if [[ "${operation}" == "backfill" ]]; then
-              docs_ref="${{ inputs.docs_ref }}"
               if [[ -z "${docs_ref}" ]]; then
                 docs_ref="docs-${source_ref}"
               fi
@@ -132,8 +123,6 @@ jobs:
                 version_label="${source_ref##*/}"
               fi
               alias_to_update=""
-            elif [[ -n "${{ inputs.docs_ref }}" ]]; then
-              docs_ref="${{ inputs.docs_ref }}"
             fi
           fi
 
@@ -145,7 +134,7 @@ jobs:
           echo "alias_to_update=${alias_to_update}" >> "$GITHUB_OUTPUT"
           echo "update_latest_alias=${update_latest_alias}" >> "$GITHUB_OUTPUT"
           echo "update_default=${update_default}" >> "$GITHUB_OUTPUT"
-          echo "docs_source_branch=${docs_source_branch}" >> "$GITHUB_OUTPUT"
+
 
       - name: Enforce strict manual audit inputs
         if: ${{ github.event_name == 'workflow_dispatch' }}
@@ -363,7 +352,6 @@ jobs:
             echo "- Actor: ${{ github.actor }}"
             echo "- Trigger: ${{ github.event_name }}"
             echo "- Operation: ${{ steps.ctx.outputs.operation }}"
-            echo "- Docs source branch: ${{ steps.ctx.outputs.docs_source_branch }}"
             echo "- Source ref: ${{ steps.ctx.outputs.source_ref }}"
             echo "- Docs ref: ${{ steps.ctx.outputs.docs_ref }}"
             echo "- Docs source selected: ${{ steps.docsctx.outputs.docs_source_used }}"
