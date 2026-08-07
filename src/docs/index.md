@@ -7,7 +7,7 @@
 
 ## Introduction
 
-The Lexos Python library reproduces and extends most of the text analysis tools in the <a href="http://lexos.wheatoncollege.edu/" target="_blank">Lexos web app</a>. Lexos is designed to implement many common text analysis procedures in a way that saves the user having to re-invent the wheel or figure out how to combine multiple Python packages to achieve a given result. It is intended to be used as a library in other projects to build backend functions for applications, but it can be used in standalone scripts or in Jupyter notebooks. As with the original web app, it is designed to accessible to entry-level users whilst offering power functionality for students and researchers, particularly in the Humanities. It is also designed to be as language-agnostic as possible so that it can be used for a wide variety of historical and under-resourced languages.
+The Lexos Python library reproduces and extends most of the text analysis tools in the [Lexos web app](http://lexos.wheatoncollege.edu/){target="_blank"}. Lexos is designed to implement many common text analysis procedures in a way that saves the user having to re-invent the wheel or figure out how to combine multiple Python packages to achieve a given result. It is intended to be used as a library in other projects to build backend functions for applications, but it can be used in standalone scripts or in Jupyter notebooks. As with the original web app, it is designed to accessible to entry-level users whilst offering power functionality for students and researchers, particularly in the Humanities. It is also designed to be as language-agnostic as possible so that it can be used for a wide variety of historical and under-resourced languages.
 
 For the moment, much of the thinking behind the API's architecture is explained in the [User Guide](user_guide/index.md).
 
@@ -16,10 +16,10 @@ For the moment, much of the thinking behind the API's architecture is explained 
 - Loads texts from a variety of sources into a common data structure.
 - Manages a corpus of texts and generates stastics about the corpus.
 - Performs text pre-processing ("scrubbing") and splitting ("cutting").
-- Performs tokenization and trains language models using <a href="https://spacy.io/" target="_blank">spaCy</a>.
+- Performs tokenization and trains language models using [spaCy](https://spacy.io/){target="_blank"}.
 - Creates assorted visualizations of term vectors.
 - Performs hierarchical and kmeans clustering.
-- Generates topic models and topic model visualizations using <a href="https://github.com/mimno/Mallet" target="_blank">MALLET</a> and <a href="https://github.com/scottkleinman/dfr-browser2" target="_blank">DFR Browser 2</a>.
+- Generates topic models and topic model visualizations using [MALLET](https://github.com/mimno/Mallet){target="_blank"} and [DFR Browser 2](https://github.com/scottkleinman/dfr-browser2){target="_blank"}.
 
 And more!
 
@@ -27,11 +27,11 @@ And more!
 
 The Lexos API is currently in beta. Most of the core functionality of the Lexos web app, along with new features, has been implemented and documented. As of January 2026, the API is considered feature complete and stable for general use, but some rough edges remain. Feedback is welcome.
 
-I will continue to fix bugs and improve the documentation as issues arise, but no major new features are planned at this time. The beta release coincides with at a time when the landscape of digital tools is rapidly evolving and AI-assisted coding is becoming more prevalent. I am waiting to see whether there is significant adoption of the Lexos library before investing more time in developing new features. If you like Lexos, you can help by requesting new features in the <a href="https://github.com/scottkleinman/uv_lexos/issues" target="_blank">GitHub issues</a> (labelled as "enhancement") or [contributing](development/index.md) them yourself.
+I will continue to fix bugs and improve the documentation as issues arise, but no major new features are planned at this time. The beta release coincides with at a time when the landscape of digital tools is rapidly evolving and AI-assisted coding is becoming more prevalent. I am waiting to see whether there is significant adoption of the Lexos library before investing more time in developing new features. If you like Lexos, you can help by requesting new features in the [GitHub issues](https://github.com/scottkleinman/uv_lexos/issues){target="_blank"} (labelled as "enhancement") or [contributing](development/index.md) them yourself.
 
 ## Questions
 
-If are looking for help using Lexos, please post you question on the <a href="https://github.com/scottkleinman/lexos/discussions" target="_blank">GitHub Discussions board</a>.
+If you are looking for help using Lexos, please post your question on the [GitHub Discussions board](https://github.com/scottkleinman/lexos/discussions).
 
 ## Contributing
 
@@ -39,8 +39,8 @@ Lexos is an open-source project, and contributions from the public are welcome. 
 
 ## License
 
-This project is licensed under the MIT License - see the <a href="https://github.com/scottkleinman/lexos/blob/main/LICENSE" target="_blank">LICENSE</a> file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/scottkleinman/lexos/blob/main/LICENSE){target="_blank"}.
 
 ## Citation Information
 
-Kleinman, S., (2026). Lexos. v0.1.0b3 https://github.com/scottkleinman/lexos. <a href="https://doi.org/10.5281/zenodo.18112380" target="_blank">doi:10.5281/zenodo.1403869</a>.
+Kleinman, S., (2026). Lexos. v0.1.0b3 [https://github.com/scottkleinman/lexos](https://github.com/scottkleinman/lexos). [doi:10.5281/zenodo.18157848](https://zenodo.org/records/18157848){target="_blank"}.
