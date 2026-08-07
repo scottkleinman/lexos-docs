@@ -239,6 +239,8 @@ extra_css:
 # - javascripts/mark.es6.min.js
 
 extra:
+  version:
+    provider: mike
   social:
     - icon: fontawesome/solid/globe
       link: http://lexos.wheatoncollege.edu/

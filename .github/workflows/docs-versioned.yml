@@ -105,6 +105,7 @@ jobs:
               docs_ref="${DOCS_SOURCE_BRANCH}"
               version_label="${DEV_VERSION}"
               alias_to_update="${DEV_VERSION}"
+              update_latest_alias="true"
             else
               echo "Unsupported repository_dispatch operation: ${operation}"
               exit 1
@@ -115,6 +116,7 @@ jobs:
             docs_ref="${DOCS_SOURCE_BRANCH}"
             version_label="${DEV_VERSION}"
             alias_to_update="${DEV_VERSION}"
+            update_latest_alias="true"
           else
             operation="${{ inputs.operation }}"
             source_ref="${{ inputs.source_ref }}"
@@ -346,6 +348,17 @@ jobs:
         run: |
           set -euo pipefail
           uv run --no-sync --with mike mike alias --config-file "${{ steps.docsctx.outputs.docs_config_path }}" --remote pages --push "${{ steps.ctx.outputs.version_label }}" latest
+
+      - name: Remove legacy main version
+        if: ${{ steps.ctx.outputs.push_to_pages == 'true' && steps.ctx.outputs.version_label == 'dev' }}
+        working-directory: docs-src
+        shell: bash
+        run: |
+          set -euo pipefail
+          cfg="${{ steps.docsctx.outputs.docs_config_path }}"
+          if uv run --no-sync --with mike mike list --config-file "$cfg" | awk 'NR>1 { if ($1 == "main") found=1 } END { exit !found }'; then
+            uv run --no-sync --with mike mike delete main --config-file "$cfg" --remote pages --push
+          fi
 
       - name: Apply alias repair
         if: ${{ steps.ctx.outputs.push_to_pages == 'true' && steps.ctx.outputs.operation == 'alias-repair' }}
