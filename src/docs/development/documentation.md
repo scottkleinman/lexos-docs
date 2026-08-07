@@ -12,46 +12,31 @@ If you contribute a new feature to Lexos, you do not have to produce a tutorial 
 
 ## The Documentation Website
 
-The documentation website is static website generated with <a href="https://www.mkdocs.org/" target="_blank">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank">Material for MkDocs</a>. Each page is a Markdown file, which is converted to HTML when the site is built.
-
-To preview changes to the documentation, serve it locally with
-
-```bash
-cd lexos/src
-uv sync --no-install-project
-uv run mkdocs serve
-```
-
-This will start a local server and automatically build a `docs` folder in the project root to contain the built website. If you do not want to serve the site, you can call `uv run mkdocs build`. However, in most case you will want to serve it to observe your changes in a web browser.
-
-If you make a new page, you must add it to the `src/docs/mkdocs.yml` configuration. If the page is under an `overview.md` page, check to see if the `overview.md` page has discussion or a table of contents where you might want to link to the new page. Note that the `mkdocs.yml` file is very easy to corrupt, so **be careful**.
-
-When building the documentation, errors and warnings will be printed to the console. Please check and resolve them before making a pull request. If there are many warnings, it can be helpful to redirect the console output to a file. You can do this with `uv run mkdocs build > build_full.log 2>&1` and then inspect the generated `build_full.log` file, which will be saved in the `src` folder. **Make sure that you don't push this file to the repository.**
-
-Whether you make a change to an existing page or add a new one, your text should follow <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank">GitHub Markdown conventions</a>, especially for code and code blocks. To see examples, you may find it helpful to review the current documentation files in the `src/docs` folder or via `mkdocs serve`.
-
-Before you make a pull request, check that the site builds properly in your local environment and make sure that your content does not contain any Markdown linting errors Lexos uses the default Markdown linting rules of of <a href="https://github.com/DavidAnson/markdownlint" target="_blank">Markdownlint</a>, except as specified in the `src/.markdownlint.json` file.
+The documentation website is static website generated with [MkDocs](https://www.mkdocs.org/){target="_blank"} and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/){target="_blank"}. Each page is a Markdown file, which is converted to HTML when the site is built.
 
 !!! note
-    It is recommended that you install the Markdownlint extension in VS Code for linting Markdown files when producing documentation. The Markdownlint extension will show you any errors.
+    The documentation website for Lexos is **maintained** in the [lexos-docs](https://github.com/scottkleinman/lexos-docs){target="_blank"} repository on GitHub, not in the `lexos` repository where the source code is located. However, the documentation website is **deployed** via the main `lexos` repository, so the site is live at [https://scottkleinman.github.io/lexos/](https://scottkleinman.github.io/lexos/){target="_blank"} (not at `/lexos-docs`).
 
-## The User Guide
+### The User Guide
 
 The User Guide is intended to provide an entry-level introduction to the major features of Lexos. Pages in the User Guide are primarily intended to provide user-friendly overviews of the Lexos modules without being too exhaustive or too technical. It is acceptable to provide more technical explanations or notes for developers in admonitions (see below), but these should be relatively infrequent. Whether you are considering contributing to existing User Guide pages or adding a new one, use the existing pages as guides for the appropriate content, tone, and technical depth. For instance, you do not necessarily need to give an account of every parameter available in a given function, just those most likely to be used by an entry-level user. You can assume that the user has some familiarity with the Python programming language, but it may be worthwhile to define some terms or explain certain concepts.
 
 Where possible, provide code samples in code blocks. Sample code should follow the conventions described on the [Code Conventions](code-conventions.md) page. If your code generates visualizations, provide links to static images in `.png` format. Typically, your page would be in a folder along with accompanying images.
 
-User Guide pages should follow the Markdown principles noted above under **The Documentation Website**. Since User Guide pages are mostly written description, they should be well-edited and follow established standards for published writing. The Lexos documentation does not follow a specific style guide, but we recommend <a href="https://www.chicagomanualofstyle.org/" target="_blank">The Chicago Manual of Style, 17th Edition</a> if you are in need of guidance but what written convention to adopt. This obviously only applies to documents in English. At present, the Lexos documentation does not have any pages in other languages, but we can imagine adding sections in other languages if users contribute them.
+User Guide pages should follow the Markdown principles noted above under **The Documentation Website**. Since User Guide pages are mostly written description, they should be well-edited and follow established standards for published writing. The Lexos documentation does not follow a specific style guide, but we recommend [The Chicago Manual of Style, 17th Edition](https://www.chicagomanualofstyle.org/){target="_blank"} if you are in need of guidance but what written convention to adopt. This obviously only applies to documents in English. At present, the Lexos documentation does not have any pages in other languages, but we can imagine adding sections in other languages if users contribute them.
 
-## The API Documentation
+### The API Documentation
 
 Each API documentation is meant primarily for developers, as it is highly technical, but it is also the only portion of the documentation that describes the full functionality of all Lexos features. For instance, a User Guide page or a Tutorial may describe only the major parameters of a function or method &mdash; those most likely to be used or most relevant to the workflow being discussed. If the User Guide or a tutorial does not mention a possible configuration or customization of a function, it is worth checking the API Documentation to see if the function has a parameter to do what you want.
 
-Unlike the User Guide, the API documentation is mostly generated automatically from the type hints and docstrings in the Python source code. This information is converted to HTML with <code><a href="https://mkdocstrings.github.io/" target="_blank">mkdocstrings</a></code> when you build the documentation website.
+Unlike the User Guide, the API documentation is mostly generated automatically from the type hints and docstrings in the Python source code. This information is converted to HTML with [`mkdocstrings`](https://mkdocstrings.github.io/){target="_blank"} when you build the documentation website.
+
+!!! note
+    When a change is pushed to `main` in `lexos-docs`, its workflow (`.github/workflows/docs-versioned.yml`) runs in that repo to build the docs from `src` and then push the generated site into the `gh-pages` branch of `lexos`; `lexos` does not build or publish the docs itself, it only acts as the host for the documentation website. The `lexos-docs` workflow is responsible for checking out the `docs` source, resolving API docs against the `lexos` codebase, rendering the site, and then committing the rendered output into `lexos`’s `gh-pages` branch so the public site remains `scottkleinman.github.io/lexos`.
 
 Each module should have its own folder, the name of which should correspond to the name of the module. Inside, there should be an `index.md` page, which is the starting point for the module's API documentation. The `index.md` file should contain a brief Markdown description of the module and a link to any other pages in the module's API documentation (these should be additional Markdown files). API pages should follow the Markdown principles noted above under **The Documentation Website**.
 
-Each Markdown file in the module's API documentation should contain a <code><a href="https://mkdocstrings.github.io/" target="_blank">mkdocstrings</a></code> templates like the following:
+Each Markdown file in the module's API documentation should contain a [`mkdocstrings`](https://mkdocstrings.github.io/){target="_blank"} templates like the following:
 
 ```yaml
 ### ::: lexos.cutter.TextCutter
@@ -71,30 +56,23 @@ A separate template should be provided for each member such as
       heading_level: 3
 ```
 
-!!! note
-  It is possible to do this concisely with mkdocstrings "selection" syntax.
+It is possible to do this concisely with `mkdocstrings` "selection" syntax.
 
-   ```yaml
-     ::: lexos.module
-         handler: python
-         selection:
-           members:
-             - MyClass
-             - MyClass.my_method
-             - my_function
-   ```
+```yaml
+  ::: lexos.module
+      handler: python
+      selection:
+        members:
+          - MyClass
+          - MyClass.my_method
+          - my_function
+```
 
-  However, this method is discouraged because the current version of `mkdocstrings` does not provide a way to hide unformattable material that may be in your docstring at the top of the module.
+However, this method is discouraged because the current version of `mkdocstrings` does not provide a way to hide unformattable material that may be in your docstring at the top of the module.
 
 The only API documentation file that does not require any `mkdocstrings` templates is the `index.md` file. This file only needs templates if it is the only Markdown file in the API's documentation.
 
 A short introduction (in Markdown) may be placed above the template, an further explanations can be added below, if necessary. You can also provide further discussion between member templates.
-
-To preview changes to the documentation, serve it locally with
-
-  ```bash
-  uv run mkdocs serve
-  ```
 
 To create direct links to individual classes, properties, and methods anywhere in the documentation, use syntax like the following:
 
@@ -103,7 +81,7 @@ To create direct links to individual classes, properties, and methods anywhere i
 
 If you create API documentation for a new module, be sure to add it to the HTML table in `src/docs/api/index.md`. When you add another row, make sure that you edit the `row-even` and `row-odd` class names so that the table striping alternates in the generated output.
 
-## The Tutorials
+### The Tutorials
 
 The User Guide is the beginner's entry-point into using Lexos, but there is no substitute for hands-on experience. So, as part of the "documentation" offer a series of Jupyter notebooks with executable code where the user can try out Lexos features. Notebooks may or may not come with sample datasets. If they do, the dataset should be compressed to a zip file in a subfolder inside the tutorial's folder. This allows the user to download both the tutorial notebook and the data to run locally. If you create a new tutorial, make sure to add it to the table of contents in `docs_src/docs/tutorials/index.md`.
 
@@ -111,7 +89,64 @@ Tutorials should be aimed at entry-level users and their Markdown narrative shou
 
 ## Submitting Changes
 
-Start by committing your changes. Make sure you write clear, descriptive commit messages.
+These instructions assume that you have set up a development environment with `uv`, `git`, and Python following the instructions at [Setting Up Your Development Environment](setup.md#setting-up-your-development-environment).
+
+### Fork and Clone the Repository
+
+Once your development environment is set up, fork and clone the `lexos-docs` repository. On the command line, run
+
+```bash
+git clone https://github.com/your-username/lexos-docs.git
+```
+
+Alternatively, if you are using VS Code or a client like GitHub Desktop, go to the GitHub repository page, click on the green "Code" button, and copy the HTTPS URL. Use this URL with your client's clone feature to clone the repository.
+
+### Create the Virtual Environment
+
+Navigate into the `lexos-docs` directory.
+
+```bash
+cd lexos-docs
+```
+
+Now create a virtual environment and install the project dependencies. From the `lexos-doc` project root:
+
+```bash
+uv sync --no-install-project
+```
+
+The `--no-install-project` flag ensures that only the dependencies needed to build the documentation are installed in the environment. You do not need to run this command again unless
+
+- you change `pyproject.toml` or `uv.lock`
+- you switch machines or recreate the environment
+- you suspect the virtual environment is broken or missing needed packages
+
+### Edit Content
+
+You are now ready to add to or edit existing content in the `src/docs` folder, change the site navigation or configuration in `src.mkdocs.yml`, or (more rarely) change the site architecture in other `src` subfolders.
+
+If you make a new page, you must add it to the `src/docs/mkdocs.yml` configuration for it to appear in the website's navigation menu. If the page is under an `overview.md` page, check to see if the `overview.md` page has discussion or a table of contents where you might want to link to the new page. Note that the `mkdocs.yml` file is very easy to corrupt, so **be careful**.
+
+Whether you make a change to an existing page or add a new one, your text should follow [GitHub Markdown conventions](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax){target="_blank"}, especially for code and code blocks. To see examples, you may find it helpful to review the current documentation files in the `src/docs` folder or via `mkdocs serve`.
+
+!!! note
+    It is recommended that you install the Markdownlint extension in VS Code for linting Markdown files when producing documentation. The Markdownlint extension will show you any errors.
+
+### Preview the Website
+
+When you are done making changes, you can preview the website locally by running
+
+```bash
+uv run mkdocs serve
+```
+
+This will start a local server and automatically build a `docs` folder in the project root to contain the built website. If you do not want to serve the site, you can call `uv run mkdocs build`. However, in most case you will want to serve it to observe your changes in a web browser.
+
+When building the documentation, errors and warnings will be printed to the console. Please check and resolve them before making a pull request (see below). If there are many warnings, it can be helpful to redirect the console output to a file. You can do this with `uv run mkdocs build > build_full.log 2>&1` and then inspect the generated `build_full.log` file, which will be saved in the `src` folder. **Make sure that you don't push this file to the repository.**
+
+### Create a Pull Request
+
+When you are satisfied with your changes, use `git` to commit them. Make sure you write clear, descriptive commit messages.
 
 An example using the command line would be
      ```bash
@@ -121,216 +156,15 @@ An example using the command line would be
 
 However, you may use the `git` client of your choice.
 
-1. **Push to Your Fork**
+Start by pushing your changes your fork on GitHub:
 
    ```bash
-   git push origin new-module-doc
+   git push origin main # or substitute the name of the branch you are working on
    ```
 
-2. **Open a Pull Request**
+Next, go to the `lexos-docs` repo and open a pull request from your branch. Fill out the pull request form describing the new module documentation.
 
-   - Go to the original repo and open a pull request from your branch.
-   - Fill out the pull request form describing the new module.
+!!! note
+     Before you make a pull request, check that the site builds properly in your local environment and make sure that your content does not contain any Markdown linting errors Lexos uses the default Markdown linting rules of of [Markdownlint](https://github.com/DavidAnson/markdownlint){target="_blank"}, except as specified in the `src/.markdownlint.json` file.
 
-3. **Review and Collaboration**
-
-   - Respond to feedback from maintainers.
-   - Make requested changes and push updates.
-   - Once approved, your changes will be merged!
-
-## Maintainer Runbook: Versioned Docs Deployment
-
-Lexos documentation is published as a versioned site with `mike` on the `gh-pages` branch.
-
-As part of the split-repo migration, `lexos` dispatches docs publishing events to this repository (`lexos-docs`). `lexos-docs` performs docs builds and publishes to the `lexos` `gh-pages` branch.
-
-### Required Repository Settings
-
-1. GitHub Pages must be configured to **Deploy from a branch**.
-2. The selected branch must be `gh-pages`.
-3. The selected folder must be `/(root)` (not `/docs`).
-
-### Branch Responsibilities
-
-1. `docs-source` stores authored docs and MkDocs configuration (`src`).
-2. `gh-pages` stores only rendered documentation output and mike metadata.
-3. `main` stores Python source code and triggers development docs updates.
-4. `docs-v*` tags (for example `docs-v0.1.0-beta.31`) are the canonical historical docs snapshots.
-
-### Automation Behavior
-
-There are now two workflows involved:
-
-1. `.github/workflows/docs-dispatch.yml` in `lexos` sends events to `lexos-docs`.
-2. `.github/workflows/docs-versioned.yml` in `lexos-docs` receives dispatch events and publishes docs.
-3. `.github/workflows/docs-versioned.yml` in `lexos` is a legacy fallback workflow and should remain manual-only.
-
-The dispatch workflow in `lexos` handles trigger forwarding.
-
-1. Push to `main` (matching paths): dispatches a `dev` docs update request.
-2. Push to a tag matching `v*`: dispatches a release-tag publish request.
-3. Release published: dispatches a release publish request.
-4. Manual dispatch: forwards a manually-audited publish request.
-
-The legacy workflow in `lexos` (`docs-versioned.yml`) only runs when one of the following is true:
-
-1. The run is started manually (`workflow_dispatch`).
-2. Repository variable `LEXOS_ENABLE_LEGACY_DOCS_DEPLOY` is set to `true`.
-
-This prevents duplicate publishes during split-repo operation.
-
-The receiver workflow in `lexos-docs` accepts:
-
-1. `repository_dispatch` event type `lexos_docs_publish` from `scottkleinman/lexos`.
-2. `workflow_dispatch` for manual operations (`dry-run`, `backfill`, `alias-repair`, `rollback`).
-
-### Alias Policy
-
-1. `stable` points to latest non-prerelease version.
-2. `stable-beta` points to latest prerelease version.
-3. `latest` points to the latest published release tag.
-4. `dev` points to docs generated from `main`.
-
-### Manual Run Requirements (Strict Audit)
-
-Manual runs require:
-
-1. operation type
-2. source ref
-3. reason
-4. change summary
-
-If required inputs are missing, the run fails.
-
-### Baseline and Rollback Guardrails
-
-Before making workflow or dependency changes, capture a baseline from one dry-run and one real publish run summary:
-
-1. Trigger
-2. Operation
-3. Source ref
-4. Docs ref
-5. Version label
-6. Push to `gh-pages`
-
-Also capture timing for:
-
-1. Total job duration
-2. Install section duration (`Install uv`, `Install Python`, `Sync docs tooling dependencies`)
-
-If a streamlining change breaks publish behavior:
-
-1. Revert `.github/workflows/docs-versioned.yml`, `pyproject.toml`, and `uv.lock` to their previous working revisions.
-2. Rerun `workflow_dispatch` with `operation=dry-run`.
-3. Resume optimization only after baseline behavior is restored.
-
-### Cutover Validation Sequence
-
-To complete cutover safely, run both validations in this order:
-
-1. `lexos-docs` `docs-versioned.yml` with `workflow_dispatch` and `operation=dry-run`.
-2. `lexos` `docs-dispatch.yml` with `workflow_dispatch` to send a real `repository_dispatch` event.
-
-Expected outcome:
-
-1. Dry-run verifies checkout + mkdocstrings path + mike execution without pushing to `gh-pages`.
-2. Real dispatch produces a `dev` publish from `lexos-docs` to `lexos` `gh-pages`.
-
-### Required Secrets and Variables for Dispatch
-
-`lexos` repository:
-
-1. By default, `.github/workflows/docs-dispatch.yml` uses `github.token` to send `repository_dispatch` to `scottkleinman/lexos-docs`.
-2. If cross-repo dispatch fails with permission errors, switch dispatch auth to a fine-grained PAT secret (for example `LEXOS_DISPATCH_PAT`) and re-run.
-
-`lexos-docs` repository:
-
-1. `LEXOS_PAGES_PAT` secret for pushing mike output to `lexos` `gh-pages` (repository-contents write on `lexos`).
-2. `.github/workflows/docs-versioned.yml` to handle `repository_dispatch` event type `lexos_docs_publish`.
-
-### Common Operations
-
-#### Backfill a Missing Version
-
-During split-repo operation, run this in `lexos-docs` workflow dispatch with:
-
-1. operation = `backfill`
-2. source_ref = release tag or commit
-3. docs_ref = optional docs snapshot ref (defaults to `docs-<source_ref>`)
-4. version_label = desired docs label
-5. reason + change_summary
-
-#### Repair an Alias
-
-During split-repo operation, run this in `lexos-docs` workflow dispatch with:
-
-1. operation = `alias-repair`
-2. alias_name = `stable`, `stable-beta`, `latest`, or `dev`
-3. target_version = existing deployed version label
-4. reason + change_summary
-
-#### Roll Back Stable Docs
-
-During split-repo operation, run this in `lexos-docs` workflow dispatch with:
-
-1. operation = `rollback`
-2. target_version = known good deployed version
-3. reason + change_summary
-
-This updates `stable` and the default landing version.
-
-#### Emergency Local Fallback Deploy from `lexos`
-
-Only use this when `lexos-docs` is unavailable.
-
-1. Run `.github/workflows/docs-versioned.yml` manually from Actions UI.
-2. Provide strict audit inputs (`reason`, `change_summary`, and operation parameters).
-3. Disable fallback usage once `lexos-docs` is healthy.
-
-### Troubleshooting Checklist
-
-If the site is not deploying:
-
-1. Verify Pages is `gh-pages` + `/(root)`.
-2. Confirm `.github/workflows/docs-dispatch.yml` exists on `main`.
-3. Confirm dispatch run succeeded in `lexos` and reached `lexos-docs`.
-4. Check `lexos-docs` workflow logs for checkout, mkdocstrings source path, and `mike deploy` failures.
-5. Confirm both required tokens are present and not expired.
-6. Confirm matching docs refs exist in `lexos-docs` for release/tag backfills (`docs-<source_ref>` pattern).
-7. If `lexos` fallback workflow ran unexpectedly, check whether `LEXOS_ENABLE_LEGACY_DOCS_DEPLOY` is set to `true`.
-8. If dispatch is rejected immediately, verify the source repository in the receiver payload is `scottkleinman/lexos`.
-
-### Local Maintainer Verification
-
-Before changing deployment logic, verify docs build locally:
-
-```bash
-cd lexos
-uv sync --group docs-ci --no-install-project
-cd src
-uv run mkdocs build
-```
-
-For API docs resolution during local tests, `mkdocs.yml` now includes default source path fallbacks for both local sibling clones (`../../lexos/src`) and CI checkout layout (`../../source/src`).
-
-If your local checkout layout is different, override it explicitly:
-
-```bash
-cd lexos-docs/src
-MKDOCSTRINGS_PYTHON_PATH=/absolute/path/to/lexos/src PYTHONPATH=/absolute/path/to/lexos/src uv run mkdocs serve
-```
-
-### Troubleshooting Local Import Paths
-
-If `mkdocs serve` or `mkdocs build` reports `ImportError` for `lexos.*`, first verify that Python can import `lexos` from your chosen source path:
-
-```bash
-cd lexos-docs/src
-MKDOCSTRINGS_PYTHON_PATH=/absolute/path/to/lexos/src PYTHONPATH=/absolute/path/to/lexos/src uv run python -c "import lexos; print(lexos.__file__)"
-```
-
-If the command fails, fix the path and try again. If it succeeds, rerun:
-
-```bash
-uv run mkdocs serve
-```
+Respond to feedback from maintainers. Make requested changes and push updates. Once approved, your changes will be merged!
