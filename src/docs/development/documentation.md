@@ -142,6 +142,25 @@ uv run mkdocs serve
 
 This will start a local server and automatically build a `docs` folder in the project root to contain the built website. If you do not want to serve the site, you can call `uv run mkdocs build`. However, in most case you will want to serve it to observe your changes in a web browser.
 
+!!! important
+    To build the Lexos Documentation website, you must clone both the `lexos` and `lexos-docs` repos *and* they must be located in the same parent directory. This is because `mkdocs.yml` uses the Python handler with source paths `../../lexos/src` and `../../source/src`. When you run `uv run mkdocs serve` from `lexos-docs/src`, `mkdocstrings` looks for the `lexos` package in sibling paths `../../lexos/src` and `../../source/src` relative to `lexos-docs/src`.
+
+    Although you can re-configure these paths in `mkdocs.yml` on your local system, these changes should not be committed to the repository. If you *really* need to store your local repositories in different locations, you can change the paths in your local environment with one of the approaches below.
+
+    1. Set the paths when running `mkdocs serve`:
+
+       ```bash
+      MKDOCSTRINGS_PYTHON_PATH=/absolute/path/to/lexos/src PYTHONPATH=/absolute/path/to/lexos/src uv run mkdocs serve
+      ```
+
+    2. Export the paths first:
+
+      ```bash
+      export MKDOCSTRINGS_PYTHON_PATH=/absolute/path/to/lexos/src
+      export PYTHONPATH=/absolute/path/to/lexos/src
+      uv run mkdocs serve
+      ```
+
 When building the documentation, errors and warnings will be printed to the console. Please check and resolve them before making a pull request (see below). If there are many warnings, it can be helpful to redirect the console output to a file. You can do this with `uv run mkdocs build > build_full.log 2>&1` and then inspect the generated `build_full.log` file, which will be saved in the `src` folder. **Make sure that you don't push this file to the repository.**
 
 ### Create a Pull Request
