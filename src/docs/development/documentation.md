@@ -123,7 +123,7 @@ The `--no-install-project` flag ensures that only the dependencies needed to bui
 
 ### Edit Content
 
-You are now ready to add to or edit existing content in the `src/docs` folder, change the site navigation or configuration in `src.mkdocs.yml`, or (more rarely) change the site architecture in other `src` subfolders.
+You are now ready to add to or edit existing content in the `src/docs` folder, change the site navigation or configuration in `src/mkdocs.yml`, or (more rarely) change the site architecture in other `src` subfolders.
 
 If you make a new page, you must add it to the `src/docs/mkdocs.yml` configuration for it to appear in the website's navigation menu. If the page is under an `overview.md` page, check to see if the `overview.md` page has discussion or a table of contents where you might want to link to the new page. Note that the `mkdocs.yml` file is very easy to corrupt, so **be careful**.
 
