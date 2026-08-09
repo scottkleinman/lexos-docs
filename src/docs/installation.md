@@ -59,16 +59,16 @@ To verify that Lexos is installed correctly, you can run the following command i
 If you are using `uv`:
 
 ```bash
-uv run python -m lexos --version
+uv run python -m lexos --info
 ```
 
 or, if you are not using `uv`:
 
 ```bash
-python -m lexos --version
+python -m lexos --info
 ```
 
-If you are using a Jupyter notebook, you can also check the installation by running the following code in a cell:
+You can also check the installation by running the following code:
 
 ```python
 import lexos
