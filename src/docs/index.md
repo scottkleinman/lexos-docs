@@ -7,14 +7,12 @@
 
 ## Introduction
 
-The Lexos Python library reproduces and extends most of the text analysis tools in the [Lexos web app](http://lexos.wheatoncollege.edu/){target="_blank"}. Lexos is designed to implement many common text analysis procedures in a way that saves the user having to re-invent the wheel or figure out how to combine multiple Python packages to achieve a given result. It is intended to be used as a library in other projects to build backend functions for applications, but it can be used in standalone scripts or in Jupyter notebooks. As with the original web app, it is designed to accessible to entry-level users whilst offering power functionality for students and researchers, particularly in the Humanities. It is also designed to be as language-agnostic as possible so that it can be used for a wide variety of historical and under-resourced languages.
-
-For the moment, much of the thinking behind the API's architecture is explained in the [User Guide](user_guide/index.md).
+The Lexos Python library is designed to implement many common text analysis procedures in a way that saves the user having to re-invent the wheel or figure out how to combine multiple Python packages to achieve a given result. It is intended to be used as a library in other projects to build backend functions for applications, but it can be used in standalone scripts or in Jupyter notebooks. As with the original web app, it is designed to accessible to entry-level users whilst offering power functionality for students and researchers, particularly in the Humanities. It is also designed to be as language-agnostic as possible so that it can be used for a wide variety of historical and under-resourced languages. The Lexos library reproduces and extends most of the text analysis tools in the original [Lexos web app](http://lexos.wheatoncollege.edu/){target="_blank"}.
 
 ## Features
 
 - Loads texts from a variety of sources into a common data structure.
-- Manages a corpus of texts and generates stastics about the corpus.
+- Manages a corpus of texts and generates statistics about the corpus.
 - Performs text pre-processing ("scrubbing") and splitting ("cutting").
 - Performs tokenization and trains language models using [spaCy](https://spacy.io/){target="_blank"}.
 - Creates assorted visualizations of term vectors.
@@ -27,7 +25,7 @@ And more!
 
 The Lexos API is currently in beta. Most of the core functionality of the Lexos web app, along with new features, has been implemented and documented. As of August 2027, the API is considered feature complete and stable for general use, but some rough edges remain. Feedback is welcome.
 
-I will continue to fix bugs and improve the documentation as issues arise, but no major new features are planned at this time. The beta release coincides with at a time when the landscape of digital tools is rapidly evolving and AI-assisted coding is becoming more prevalent. I am waiting to see whether there is significant adoption of the Lexos library before investing more time in developing new features. If you like Lexos, you can help by requesting new features in the [GitHub issues](https://github.com/scottkleinman/uv_lexos/issues){target="_blank"} (labelled as "enhancement") or [contributing](development/index.md) them yourself.
+The beta release coincides with at a time when the landscape of digital tools is rapidly evolving and AI-assisted coding is becoming more prevalent. I am waiting to see whether there is significant adoption of the Lexos library before investing more time in developing new features. If you like Lexos, you can help by requesting new features in the [GitHub issues](https://github.com/scottkleinman/uv_lexos/issues){target="_blank"} (labelled as "enhancement") or [contributing](development/index.md) them yourself.
 
 ## Questions
 
@@ -43,4 +41,8 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## Citation Information
 
+Kleinman, S., (2026). Lexos. v0.2.0-pre-release [https://github.com/scottkleinman/lexos](https://github.com/scottkleinman/lexos).
+
+<!-- Retained as a template for future releases once they have DOIs -->
 Kleinman, S., (2026). Lexos. v0.1.0b3 [https://github.com/scottkleinman/lexos](https://github.com/scottkleinman/lexos). [doi:10.5281/zenodo.18157848](https://zenodo.org/records/18157848){target="_blank"}.
+-->

@@ -4,31 +4,25 @@ The information below describes how to install Lexos as a user. If you are inter
 
 ## Installing Python
 
-Lexos requires Python 3.12 or greater. Our development environment is <code><a href="https://docs.astral.sh/uv/" target="blank">uv</a></code>, and Lexos should work in a Python virtual environment created using that tool. If you are using a different Python environment, you can install Lexos using `pip`.
+Lexos requires Python 3.12 or greater. Our development environment is [`uv`](https://docs.astral.sh/uv/){target="_blank"}, and Lexos should work in a Python virtual environment created using that tool. If you are using a different Python environment, you can install Lexos using `pip`.
 
 ## Installing the Lexos Package
 
-You can install Lexos using pip:
+### Install with `uv`:
 
-```bash
-pip install lexos
-```
-
-If you are using `uv`, run
+In your project folder, run the following command in your terminal:
 
 ```bash
 uv add lexos
 ```
 
-!!! note
-    Lexos depends on a pre-release version of the Python `puremagic` library. In some cases, `uv` may prevent installation. If you encounter this problem, try `uv add lexos --prerelease=allow`. If you are using Lexos as a dependency in your project, add the following to your `pyproject.toml` file:
+### Install with `pip`:
 
-    ```toml
-    [tool.uv]
-    prerelease = "allow"
-    ```
+You can install Lexos globally or in a virtual environment by running the following command in your terminal:
 
-This will install the Lexos API and all of its dependencies.
+```bash
+pip install lexos
+```
 
 By default, `uv` installs the latest version of Lexos. To update to the latest version with `pip`, use
 
@@ -38,11 +32,11 @@ pip install -U lexos
 
 ## Downloading Language Models
 
-Many features of Lexos use language models created for the Python <a href="https://spacy.io/" target="_blank">spaCy</a> natural language processing library. When you install Lexos, spaCy's multi-language model <code><a href="https://spacy.io/models/xx#xx_sent_ud_sm" target="_blank">xx_sent_ud_sm</a></code> and small English model <code><a href="https://spacy.io/models/en#en_core_web_sm" target="_blank">en_core_web_sm</a></code> are installed. For information on how Lexos uses language models, see [Tokenizing Texts](user_guide/tokenizing_texts.md).
+Many features of Lexos use language models created for the Python [`spaCy`](https://spacy.io/){target="_blank"} natural language processing library. When you install Lexos, spaCy's multi-language model [`xx_sent_ud_sm`](https://spacy.io/models/xx#xx_sent_ud_sm){target="_blank"} and small English model [`en_core_web_sm`](https://spacy.io/models/en#en_core_web_sm){target="_blank"} are installed. For information on how Lexos uses language models, see [Tokenizing Texts](user_guide/tokenizing_texts.md).
 
 ## Downloading Additional Language Models (Optional)
 
-The `xx_sent_ud_sm` model is a minimal model that can be used for sentence and token segmentation in a variety of languages, while the `en_core_web_sm` model is specifically for English text. If you are working in another language or need a larger language, you may need to download additional language models. You can find information on available models on the <a href="https://spacy.io/models" target="_blank">spaCy models</a> page.
+The `xx_sent_ud_sm` model is a minimal model that can be used for sentence and token segmentation in a variety of languages, while the `en_core_web_sm` model is specifically for English text. If you are working in another language or need a larger language, you may need to download additional language models. You can find information on available models on the [`spaCy` models](https://spacy.io/models){target="_blank"} page.
 
 To download a model (for instance, the small Chinese model `zh_core_web_sm`), you can run the following commands in your terminal.
 
@@ -78,10 +72,10 @@ If you are using a Jupyter notebook, you can also check the installation by runn
 
 ```python
 import lexos
-print(lexos.__version__)
+lexos.get_info()
 ```
 
-This should display the version of Lexos that is installed. If you see an error, please check your installation steps or refer to the [Troubleshooting](#troubleshooting) section below.
+This should display the Lexos package information, including the version number. If you see an error, please check your installation steps or refer to the [Troubleshooting](#troubleshooting) section below.
 
 ## Troubleshooting
 
@@ -105,7 +99,7 @@ If your version is lower than 3.12, please install a compatible version and crea
 **Issue:** The terminal says `uv: command not found` or `pip: command not found`.
 
 **Solution:**
-Make sure you have installed <code><a href="https://docs.astral.sh/uv/" target="blank">uv</a></code> or <code><a href="https://pip.pypa.io/en/stable/installation/" target="blank">pip</a></code>. If not, follow the official installation instructions for your platform.
+Make sure you have installed [`uv`](https://docs.astral.sh/uv/){target="_blank"} or [`pip`](https://pip.pypa.io/en/stable/installation/){target="_blank"}. If not, follow the official installation instructions for your platform.
 
 ### 3. Permission Denied Errors
 
@@ -147,4 +141,4 @@ pip install --upgrade pip
 uv pip install --upgrade uv
 ```
 
-If you encounter any other problems not covered here, please consider reaching out to the Lexos community Discussion forum on GitHub or checking the <a href="https://github.com/scottkleinman/lexos/issues" target="_blank">GitHub Issues page</a> for assistance.
+If you encounter any other problems not covered here, please consider reaching out to the Lexos community Discussion forum on GitHub or checking the [GitHub Issues page](https://github.com/scottkleinman/lexos/issues){target="_blank"} for assistance.
