@@ -1,8 +1,11 @@
 # IO
 
-The `IO` module contains the classes and methods useful for loading in texts and text data from various souces and formats into a consistant structure so they can be analyzed within the Lexos enviroment.
+The `io` module contains the classes and methods useful for loading in texts and text data from various sources and formats into a consistent structure so they can be analyzed within the Lexos environment.
 
-This module contains three main components:
+!!! important
+    The Lexos library is designed to work with UTF-8 encoded text since UTF-8 is the global standard for universal character support. If you are loading texts in a different encoding, the `io` module will attempt to convert them to UTF-8. If the conversion fails, an error will be raised.
+
+The `io` module contains three main components:
 
 1. `Loader`: The main loader used for Lexos. Designed to handle individual files (.txt, .pdf, and docx), directories of files, and zip archives.
 2. `ParallelLoader`: An optimized version of `Loader` for loading large numbers of files using concurrent processing.
@@ -18,7 +21,7 @@ All loaders built on `BaseLoader` have the following attributes for storing load
 - `texts`: The text content of the loaded items.
 - `errors`: Any errors encountered during loading.
 
-Additionally loaders will have access to the following properties:
+Additionally, loaders will have access to the following properties:
 
 - `records`: Returns a list of dictionaries, with each representing a loaded item with keys such as `name`, `path`, and `mime_type`.
 - `data`: Returns a single dictionary containing all of the data stored in the loader.
@@ -52,16 +55,19 @@ The `Loader` class automatically detects the file type based on the file extensi
 Here is an example of how to use `Loader`:
 
 ```python
-from lexos.io.loader import Loader
+from lexos import Loader
 
 # Create a Loader instance
 loader = Loader()
 
 # Sample texts from various sources
-loader.load("path/to/file1.txt")
-loader.load(["path/to/file2.txt", "path/to/file3.txt"])
-loader.load("path/to/directory_of_files")
-loader.load("url/to/file4.txt")
+loader.load("path/to/file1.txt")            # Load a single local text file
+loader.load("path/to/directory_of_files")   # Load all files in a directory
+loader.load("url/to/file2.txt")             # Load a text file from a URL
+loader.load([                               # Load multiple text files
+  "path/to/file1.txt",
+  "url/to/file2.txt"
+])
 ```
 
 Once texts are loaded, they can be accessed through the `texts` attribute or the `df` property, which returns a pandas DataFrame of the loaded records. If there is a problem loading a file, the error will be logged in the `errors` attribute.
@@ -69,7 +75,7 @@ Once texts are loaded, they can be accessed through the `texts` attribute or the
 By default, the `Loader` class assigns names to loaded texts based on the file name, minus the extension. However, custom names can be provided using the `names` parameter when loading files.
 
 ```python
-from lexos.io.loader import Loader
+from lexos import Loader
 
 # Create a Loader instance
 loader = Loader(names=["Doc1", "Doc2"])
@@ -100,14 +106,14 @@ For large-scale corpus loading (1000+ documents), `ParallelLoader` can provide 5
 - **CPU-intensive formats**: PDFs and DOCX files that require parsing
 - **Mixed file types**: Processing different file types that can be handled independently
 
-For small file counts (<50 files) on fast local storage, the standard `Loader` may be faster due to threading overhead.
+For small file counts \(<50 files\) on fast local storage, the standard `Loader` may be faster due to threading overhead.
 
 ### Basic Usage
 
 The `ParallelLoader` API is identical to the standard `Loader`, making it a drop-in replacement:
 
 ```python
-from lexos.io.parallel_loader import ParallelLoader
+from lexos import ParallelLoader
 
 # Create a ParallelLoader instance
 loader = ParallelLoader()
@@ -127,7 +133,7 @@ print(loader.df)
 `ParallelLoader` provides several options to customize performance:
 
 ```python
-from lexos.io.parallel_loader import ParallelLoader
+from lexos import ParallelLoader
 
 # Customize worker threads and batch size
 loader = ParallelLoader(
@@ -229,7 +235,7 @@ The basic method for loading a file with one document per line is as follows:
 
 ```python
 # Import the DataLoader class
-from lexos.io.data_loader import DataLoader
+from lexos import DataLoader
 
 loader = DataLoader()
 loader.load_lineated_text("path/to/file.txt")
@@ -239,7 +245,7 @@ Note that each document will be named "text001", "text002", "text003", etc. unle
 
 ```python
 # Import the DataLoader class
-from lexos.io.data_loader import DataLoader
+from lexos import DataLoader
 
 loader = DataLoader(names=["author1", "author2", "author3"])
 loader.load_lineated_text("path/to/file.txt")
@@ -251,7 +257,7 @@ The procedure is similar for CSV and Excel files. However, you must designate wh
 
 ```python
 # Import the DataLoader class
-from lexos.io.data_loader import DataLoader
+from lexos import DataLoader
 
 loader = DataLoader()
 loader.load_csv("path/to/file.csv", name_col="name", text_col="content")
@@ -270,7 +276,7 @@ In a JSON-formatted file, each document is a separate object consisting of field
 
 ```python
 # Import the DataLoader class
-from lexos.io.data_loader import DataLoader
+from lexos import DataLoader
 
 loader = DataLoader()
 loader.load_json("path/to/file.json", name_field="name", text_field="content")

@@ -8,7 +8,7 @@ Let's say that you have a  long text string that you wanted to break into smalle
 
 ```python
 # Import the TextCutter class
-from lexos.cutter.text_cutter import TextCutter
+from lexos import TextCutter
 
 # Create a sample text
 text = (

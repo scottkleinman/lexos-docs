@@ -5,9 +5,9 @@ date: 2025-07-01
 
 # Scrubbing Texts
 
-"Scrubbing" is Lexos jargon for preprocessing raw text strings. This normally done prior to any analysis in order to clean up idiosyncracies in the text which we don't want to factor into our analysis. Lexos provides many functions for performing this text cleaning through the `scrubber` module, or Scrubber.
+"Scrubbing" is Lexos jargon for preprocessing raw text strings. This is normally done prior to any analysis in order to clean up idiosyncrasies in the text which we don't want to factor into our analysis. Lexos provides many functions for performing this text cleaning through the `scrubber` module, or "Scrubber".
 
-The Scrubber module has the following features:
+Scrubber module has the following features:
 
 - A built-in registry of commonly used, and reusable, component functions
 - A modular pipeline for text scrubbing
@@ -16,7 +16,7 @@ The Scrubber module has the following features:
 
 Scrubbing works by applying a single function or a pipeline of functions to the text, with each function applied in the order given.
 
-Scrubber can be defined as a *destructive* preprocessor. In other words, it changes the text as loaded in ways that potentially make mapping the results onto the original text impossible. It is therefore best used before other procedures so that the scrubbed text is essentially treated as the "original" text. This differs from the [Tokenizer](tokenizing_texts.md), which divides the text into "tokens" (often words) without destroying the original text.
+Scrubber is a *destructive* preprocessor. In other words, it changes the text as loaded in ways that potentially make mapping the results onto the original text impossible. It is therefore best used before other procedures so that the scrubbed text is essentially treated as the "original" text. This differs from the [Tokenizer](tokenizing_texts.md), which divides the text into "tokens" (often words) without destroying the original text.
 
 !!! note
     In the Lexos web app, Scrubber is used to tokenize the text before any other scrubbing actions occur. In the Lexos Python library, these preprocessing and tokenization are kept strictly separate.
@@ -32,7 +32,7 @@ Scrubber components are divided into four categories:
 
 Follow the links above to read about the functions in each of Scrubber's components. To learn more about how the `scrubber` module works, take a look at the documentation on its [internal components](scrubber/internal_components.md).
 
-!!! note "Developer's Note"
+!!! note "Note for Developers"
     Many of the functions and resources in Scrubber are built on top of the preprocessing functions in the Python [Textacy](https://github.com/chartbeat-labs/textacy/){target="_blank"} library, although sometimes with modifications. Textacy is installed with Lexos, so it can also be imported and called directly if necessary.
 
 ## Loading Components
@@ -84,13 +84,13 @@ def title_case(text: str) -> str:
 scrubber_components.register("title_case", func=title_case)
 ```
 
-To use a custom scrubbing function, you must register it _before_ you call `get_component()` or `get_components()`.
+To use a custom scrubbing function, you must register it *before* you call `get_component()` or `get_components()`.
 
 !!! note "Developer's Note"
     The Scrubber component registry is managed using the Python [catalogue](https://github.com/explosion/catalogue){target="_blank"} library, which also allows you to register functions with a decorator.
 
     ```python
-    @scrubber_functions.register("title_case")
+    @scrubber_components.register("title_case")
     def title_case(text: str) -> str:
         """Our custom function to convert text to title case."""
         return text.title()
@@ -138,14 +138,14 @@ lower_case, punctuation, remove_digits = get_components("lower_case", "punctuati
 pipe = make_pipeline(
     lower_case,
     punctuation,
-    partial(remove_digits, only=["1"])
+    partial(remove_digits, only=["2"])
 )
 
 # Scrub the text
 scrubbed_text = pipe("Lexos is the number 12 text analysis tool!!")
 ```
 
-This will return "lexos is the number 2 text analysis tool". Notice that our `remove_digits()` function accepts the `only` keyword. So we pass it and its keyword arguments to the pipeline by wrapping it in the `partial()` function.
+This will return "lexos is the number 1 text analysis tool". Notice that our `remove_digits()` function accepts the `only` keyword. So we pass it and its keyword arguments to the pipeline by wrapping it in the `partial()` function.
 
 You can also pass a list or tuple of components to `make_pipeline()` directly for single-use pipelines:
 
@@ -191,13 +191,13 @@ The `add_pipe()` method can also take a list or tuple of components such as `["l
 
 ```python
 from functools import partial
-scrubber.add_pipe(["lower_case", partial(remove_digits, only=["1"])])
+scrubber.add_pipe(["lower_case", partial(remove_digits, only=["2"])])
 ```
 
 As an alternative, you can pass a tuple with the keyword arguments in a dictionary:
 
 ```python
-scrubber.add_pipe(["lower_case", ("digits", {"only": ["1"]})])
+scrubber.add_pipe(["lower_case", ("digits", {"only": ["2"]})])
 ```
 
 Multiple components will be added to the pipeline in the order they are passed. You can insert components in particular positions at any time using the `first`, `last`, `before`, and `after` arguments:
@@ -224,7 +224,7 @@ Once the pipeline is set up, you can scrub text with the `Scrubber.scrub()` meth
 scrubbed_text = scrubber.scrub("Lexos is the number 12 text analysis tool!!")
 ```
 
-This returns "lexos is the number 2 text analysis tool!!".
+This returns "lexos is the number 12 text analysis tool!!".
 
 It is also possible to apply the scrubbing pipeline to a list or tuple of texts using the `Scrubber.pipe()` method:
 

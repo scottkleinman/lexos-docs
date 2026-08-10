@@ -11,7 +11,7 @@ There are two methods of generating word cloud variants: pure Python approaches 
 Word clouds display each submitted term in your text(s), scaled according to its frequency and laid out in a compact display so that you can easily "eyeball" which terms are most frequent. To produce a basic word cloud, import the `WordCloud` class and submit a simple text.
 
 ```python
-from lexos.visualization.cloud import WordCloud
+from lexos import WordCloud
 
 text = "This is a sample text to demonstrate how to produce a word cloud."
 wc = WordCloud(data=text, title="My Word Cloud")
@@ -29,7 +29,7 @@ Unlike many other word cloud generators, Lexos prefers for you to pre-tokenise y
 
 ```python
 # Import the Lexos Tokenizer class
-from lexos.tokenizer import Tokenizer
+from lexos import Tokenizer
 
 # Create an instance of the Tokenizer class and make a spaCy doc
 tokenizer = Tokenizer(model="en_core_web_sm")
@@ -138,7 +138,7 @@ plt.savefig("wordcloud.png", dpi = 300)
 Bubble charts (also known as packed circle charts or bubble visualisations) arrange terms into labelled circles, which can sometimes be easier to read than traditional word clouds. They are produced in a similar manner.
 
 ```python
-from lexos.visualization.cloud import WordCloud
+from lexos import WordCloud
 
 text = "This is a sample text to demonstrate how to produce a bubble chart."
 bc = BubbleChart(data=text, title="My Bubble Chart")

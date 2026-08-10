@@ -8,11 +8,11 @@ To get started, import the `StructuralAnalyzer` class from the `lexos.structural
 
 ```python
 # Import the StructuralAnalyzer class
-from lexos.structural_stylometry import StructuralAnalyzer
+from lexos import StructuralAnalyzer
 
 # Optionally, import the Loader and Corpus classes if you want to load your data from files or a Lexos corpus
-from lexos.io.loader import Loader
-from lexos.corpus import Corpus
+from lexos import Loader
+from lexos import Corpus
 ```
 
 ## Get the Corpus
@@ -37,7 +37,7 @@ sample_corpus = {
 If you wish to load files with a Lexos `Loader` object, you can do so by instantiating the `Loader` class and calling the `load()` method with a path to a directory of files.
 
 ```python
-from lexos.io.loader import Loader
+from lexos import Loader
 
 loader = Loader()
 loader.load("path/to/directory_of_files")
@@ -46,7 +46,7 @@ loader.load("path/to/directory_of_files")
 If you wish to use a Lexos `Corpus`, it might look like this:
 
 ```python
-from lexos.corpus import Corpus
+from lexos import Corpus
 
 corpus_directory = "path/to/directory_of_files"
 lexos_corpus = Corpus(

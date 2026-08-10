@@ -100,7 +100,7 @@ Let's start by importing the Lexos `Tokenizer` class to create a spaCy Doc objec
 
 ```python
 # Import Tokenizer and TokenMilestones
-from lexos.tokenizer import Tokenizer
+from lexos import Tokenizer
 from lexos.milestones.token_milestones import TokenMilestones
 
 text = "Chapter 1: Introduction. Chapter 2: Methods."
