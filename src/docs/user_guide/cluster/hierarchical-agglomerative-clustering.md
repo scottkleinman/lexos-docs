@@ -388,3 +388,8 @@ bct.show(layout="rectangular")
   <img src="../../cluster/bct-shakespeare15-custom-colors.png" alt="Sample Bootstrap Consensus Tree with custom label colors">
   <figcaption>Sample Bootstrap Consensus Tree with custom label colors</figcaption>
 </figure>
+
+## SeeTrees
+
+SeeTrees are another method of analyzing and visualizing hierarchical clusters developed by Artjoms Šeļa for the R ['see' package](https://github.com/perechen/seetrees){target="_blank"}. The Lexos `seetrees` module is adapted from the original R implementation. See the separate [Hierarchical Agglomerative Clustering with SeeTrees page](seetrees.md) for details on how to use this module.
+
