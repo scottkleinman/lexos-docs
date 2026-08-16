@@ -6,6 +6,6 @@ The User Guide is also intended to be a comprehensive resource for users of all 
 
 The User Guide is divided into several sections, each focusing on a specific aspect or module of the Lexos library. You can navigate through the sections using the links in the sidebar. Within pages, a table of contents on the right allows you navigate between sections on the page to explore individual topics.
 
-All of Lexos' dependencies are downloaded when Lexos is installed. For installation instructions, please refer to the [Installation](../installation.md) guide.
+All of Lexos' dependencies are downloaded when Lexos is installed. For installation instructions, please refer to the [Installation](installation.md) guide.
 
-Once you have installed Lexos, you can move on to the [Getting Started](../getting-started.md) guide.
+Once you have installed Lexos, you can move on to the [Getting Started](getting_started.md) guide.

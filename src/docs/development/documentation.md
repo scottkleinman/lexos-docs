@@ -87,6 +87,11 @@ The User Guide is the beginner's entry-point into using Lexos, but there is no s
 
 Tutorials should be aimed at entry-level users and their Markdown narrative should follow the same principles as outlined for the User Guide (except that sample code should mostly be in executable Python cells). All code blocks and Python cells should follow the conventions described on the [Code Conventions](code-conventions.md) page.
 
+!!! important
+    The tutorials will not run in the `lexos-docs` virtual environment since it does not have a copy of Lexos. In order to run them, you need to have Lexos installed in a separate environment (such as you might have in a clone of the `lexos` repo). You must then select that virtual environment as your Python kernel. For instance, if you open a tutorial in VS Code, click `Select Kernel` at the top right, followed by `Select Another Kernel...`, `Python Environments...`, `Create Python Environment`, and `Enter Interpreter Path`. Then enter the path to `lexos/.venv/bin/python` (if that is where your Lexos virtual environment is located). This is something of a tedious procedure, so, if you are going to be working with the tutorials frequently, you may want to create a named kernel for your Lexos virtual environment. See [Named Notebook Tutorials](named-notebook-tutorials.md) for instructions.
+
+Tutorials are not automatically built into the documentation website. If you want to add a new tutorial, you must add a link to it to the `src/docs/tutorials/index.md` file and then build the site with `uv run mkdocs build` or `uv run mkdocs serve`. You can also add a link to the tutorial in the User Guide or API documentation, if appropriate.
+
 ## Submitting Changes
 
 These instructions assume that you have set up a development environment with `uv`, `git`, and Python following the instructions at [Setting Up Your Development Environment](setup.md#setting-up-your-development-environment).

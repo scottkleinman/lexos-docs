@@ -1,8 +1,3 @@
----
-draft: true
-date: 2025-07-01
----
-
 # Scrubbing Texts
 
 "Scrubbing" is Lexos jargon for preprocessing raw text strings. This is normally done prior to any analysis in order to clean up idiosyncrasies in the text which we don't want to factor into our analysis. Lexos provides many functions for performing this text cleaning through the `scrubber` module, or "Scrubber".
@@ -42,7 +37,7 @@ Components must be loaded before they can be used. Each loaded component is a fu
 There are several ways to load Scrubber components into a Python file. The simplest is to import the component directly:
 
 ```python
-from scrubber.normalize import lower_case
+from lexos.scrubber.normalize import lower_case
 ```
 
 It is also possible to load the entire registry, called `scrubber_components`, and get individual components as needed:
@@ -55,7 +50,7 @@ from lexos.scrubber import scrubber_components
 lower_case = scrubber_components.get("lower_case")
 ```
 
-In addition, Lexos provides a `get_components()` helper function to load components from the registry:
+In addition, Lexos provides a `get_components()` helper function to load multiple components from the registry:
 
 ```python
 # Load the helper functions
@@ -72,7 +67,7 @@ Which method you choose will depend on your preference and your workflow. Gettin
 
 ### Custom Scrubbing Components
 
-Although Scrubber provides many component functions that perform common tasks like removing punctuation or HTML tags, users can also write custom components for use with Scrubber. These components are written like a normal functions and then added to the component registry. Below is an example with a custom `title_case` function.
+Although Scrubber provides many component functions that perform common tasks like removing punctuation or HTML tags, users can also write custom components for use with Scrubber. These components are written like a normal functions and then added to the component registry. Below is an example with a custom `title_case` function (which wouldn't use in practice since it simply calls Python's `title` function).
 
 ```python
 # Define the custom function
@@ -86,7 +81,7 @@ scrubber_components.register("title_case", func=title_case)
 
 To use a custom scrubbing function, you must register it *before* you call `get_component()` or `get_components()`.
 
-!!! note "Developer's Note"
+!!! note "Note for Developers"
     The Scrubber component registry is managed using the Python [catalogue](https://github.com/explosion/catalogue){target="_blank"} library, which also allows you to register functions with a decorator.
 
     ```python
@@ -105,11 +100,11 @@ If you are intending to apply multiple components to a single text, the more eff
 
 ## Scrubbing Pipelines
 
-When scrubbing texts, we may need to apply Scrubber components in a particular order. For this, we need a scrubbing **pipeline**, which we can create using either the `make_pipeline()` function or the `Scrubber` class. Each of these methods is detailed below.
+When scrubbing texts, you may need to apply multiple Scrubber components in a particular order. To do this, you can create a scrubbing **pipeline**. The advantage of a pipeline over simply calling components in succession is that you can easily re-use your pipeline. Lexos provides two methods of constructing pipelines: the `make_pipeline()` function and the `Scrubber` class. Each of these methods is detailed below. Which you choose will depend on your workflow and personal preference.
 
 ### Using `make_pipeline()`
 
-To make a pipeline with the `make_pipeline()` function, we import the function and pass our components to it in the order we want them to be implemented.
+To make a pipeline with the `make_pipeline()` function, import the function and pass your components to it in the order you want them to be implemented.
 
 ```python
 from lexos.scrubber import make_pipeline
@@ -129,7 +124,7 @@ This will return "lexos is the number 12 text analysis tool".
 Many Scrubber functions take additional keyword arguments. To pass them to a pipeline, it is necesary to use the `functools.partial` function:
 
 ```python
-from functools.import partial
+from functools import partial
 from lexos.scrubber import get_components
 
 lower_case, punctuation, remove_digits = get_components("lower_case", "punctuation", "digits")
@@ -147,6 +142,9 @@ scrubbed_text = pipe("Lexos is the number 12 text analysis tool!!")
 
 This will return "lexos is the number 1 text analysis tool". Notice that our `remove_digits()` function accepts the `only` keyword. So we pass it and its keyword arguments to the pipeline by wrapping it in the `partial()` function.
 
+!!! note
+    See the [API documentation](../api/scrubber/index.md) for a full list of keyword arguments accepted by each Scrubber component.
+
 You can also pass a list or tuple of components to `make_pipeline()` directly for single-use pipelines:
 
 ```python
@@ -158,17 +156,17 @@ scrubbed_text = pipe("Lexos is the number 12 text analysis tool!!")
 
 This will produce the same result.
 
-Lexos also provides the `scrub()` function, which takes a text and pipeline as arguments.
+Lexos also provides the `scrub()` helper function, which takes a text and pipeline as arguments.
 
 ```python
 from lexos.scrubber import scrub
 
 pipes = (lower_case, punctuation)
-pipeline = make_pipeline(pipes)
+pipe = make_pipeline(pipes)
 
 scrubbed_text = scrub(
     "Lexos is the number 12 text analysis tool!!",
-    pipeline
+    pipe
 )
 ```
 
