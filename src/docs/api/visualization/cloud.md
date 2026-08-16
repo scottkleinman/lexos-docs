@@ -167,42 +167,62 @@
       show_root_heading: true
       heading_level: 3
 
+### ::: lexos.visualization.cloud.MultiCloud._process_dtm
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.visualization.cloud.MultiCloud._process_dataframe
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.visualization.cloud.MultiCloud._process_list
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.visualization.cloud.MultiCloud._normalize_selected_docs
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.visualization.cloud.MultiCloud._process_dtm_row
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.visualization.cloud.MultiCloud._process_dataframe_row
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.visualization.cloud.MultiCloud._filter_positive_counts
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.visualization.cloud.MultiCloud._to_float
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
 ### ::: lexos.visualization.cloud.MultiCloud._setup_wordcloud
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.visualization.cloud.MultiCloudOld
+### ::: lexos.visualization.cloud.MultiCloud._render
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.visualization.cloud.MultiCloudOld.__init__
+### ::: lexos.visualization.cloud.MultiCloud.save
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.visualization.cloud.MultiCloudOld._process_data
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.visualization.cloud.MultiCloudOld._render
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.visualization.cloud.MultiCloudOld.save
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.visualization.cloud.MultiCloudOld.get_clouds
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.visualization.cloud.MultiCloudOld.show
+### ::: lexos.visualization.cloud.MultiCloud.show
     rendering:
       show_root_heading: true
       heading_level: 3

@@ -7,6 +7,11 @@ The `ParallelLoader` class is an implementation of the `Loader` class optimized 
       show_root_heading: true
       heading_level: 3
 
+::: lexos.io.parallel_loader._sanitize_zip_filename
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
 ## class `ParallelLoader`
 
 !!! note
@@ -42,22 +47,7 @@ The `ParallelLoader` class is an implementation of the `Loader` class optimized 
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.io.parallel_loader.ParallelLoader._calculate_optimal_workers
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.io.parallel_loader.ParallelLoader._detect_mime_types_parallel
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
 ### ::: lexos.io.parallel_loader.ParallelLoader._get_mime_type
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.io.parallel_loader.ParallelLoader._group_by_type
     rendering:
       show_root_heading: true
       heading_level: 3
@@ -87,17 +77,57 @@ The `ParallelLoader` class is an implementation of the `Loader` class optimized 
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.io.parallel_loader.ParallelLoader._prepare_file_list
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
 ### ::: lexos.io.parallel_loader.ParallelLoader._process_results
     rendering:
       show_root_heading: true
       heading_level: 3
 
+### ::: lexos.io.parallel_loader.ParallelLoader._prepare_file_list
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.io.parallel_loader.ParallelLoader._detect_mime_types_parallel
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.io.parallel_loader.ParallelLoader._group_by_type
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.io.parallel_loader.ParallelLoader._calculate_optimal_workers
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
 ### ::: lexos.io.parallel_loader.ParallelLoader._sort_files_by_type
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.io.parallel_loader.ParallelLoader._maybe_update_progress
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.io.parallel_loader.ParallelLoader._maybe_call_callback
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.io.parallel_loader.ParallelLoader._process_streaming_future
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.io.parallel_loader.ParallelLoader._stream_results
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.io.parallel_loader.ParallelLoader.load
     rendering:
       show_root_heading: true
       heading_level: 3
@@ -108,11 +138,6 @@ The `ParallelLoader` class is an implementation of the `Loader` class optimized 
       heading_level: 3
 
 ### ::: lexos.io.parallel_loader.ParallelLoader.load_streaming
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.io.parallel_loader.ParallelLoader.load
     rendering:
       show_root_heading: true
       heading_level: 3
