@@ -90,7 +90,61 @@ The corpus module allows you to serialize and de-serialize your records to disk,
       show_root_heading: true
       heading_level: 3
 
+### ::: lexos.corpus.corpus.Corpus._normalize_content_items
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._create_record
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._normalize_ids
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._load_record_by_id
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._remove_record_by_id
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._filter_stats_records
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._build_stats_token_list
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._get_token_strings
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
 ### ::: lexos.corpus.corpus.Corpus.add
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._add_to_corpus_without_state_update
 
     rendering:
       show_root_heading: true
@@ -151,6 +205,24 @@ The corpus module allows you to serialize and de-serialize your records to disk,
       heading_level: 3
 
 ### ::: lexos.corpus.corpus.Corpus.to_df
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._build_unparsed_row
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._patch_df_row_for_record
+
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.corpus.corpus.Corpus._add_metadata_to_row
 
     rendering:
       show_root_heading: true
