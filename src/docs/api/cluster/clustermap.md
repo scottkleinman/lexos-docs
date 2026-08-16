@@ -80,7 +80,117 @@
       show_root_heading: true
       heading_level: 3
 
+### ::: lexos.cluster.clustermap.PlotlyClustermap._resolve_heatmap_label_settings
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._prepare_heatmap_kwargs
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._create_cluster_grid
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._prepare_row_dendrogram
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._prepare_col_dendrogram
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._get_subplots_config
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._get_heatmap_position
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._axis_ref
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._create_heatmap_trace
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._build_figure
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._configure_axes
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._configure_dendrogram_axes
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._base_axis_style
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._heatmap_axis_style
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._dendrogram_axis_style
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._add_annotations
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._skip_annotation
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._build_annotation
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._annotation_color
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
 ### ::: lexos.cluster.clustermap.PlotlyClustermap._adjust_layout_for_hidden_upper
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._find_heatmap_and_row_dendrogram_axes
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._axis_name
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.PlotlyClustermap._set_labels
     rendering:
       show_root_heading: true
       heading_level: 3
@@ -121,6 +231,11 @@
       heading_level: 3
 
 ### ::: lexos.cluster.clustermap.PlotlyClusterGrid._calculate_linkage
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
+### ::: lexos.cluster.clustermap.get_matrix
     rendering:
       show_root_heading: true
       heading_level: 3
