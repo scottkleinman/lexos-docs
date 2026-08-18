@@ -4,6 +4,8 @@
 
     `seetrees` is currently in beta mode. Some of the visualisation methods do not return figures that can be stored to variables. Likewise, there are currently no methods to save the plot output. For the moment, it is best called as a script or run in a Jupyter notebook where the figures can be displayed by default when the method is called.
 
+    There are likely to be breaking changes in the near future, so the API documentation should likely not be considered reliable until this warning goes away.
+
 ## Overview
 
 The `seetrees` module provides stylometric analysis and visualization tools for document-term-style data, such as comparing document profiles, computing distance matrices, visualizing document relationships, and exploring feature importance across clusters. It is particularly effective for identifying authorship patterns or stylistic shifts across a corpus.
