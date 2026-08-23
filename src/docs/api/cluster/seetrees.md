@@ -8,66 +8,166 @@ SeeTrees is adapted from the R ['see' package](https://github.com/perechen/seetr
 
 ### ::: lexos.cluster.seetrees.SeeTrees
 
-    rendering:
-      show_root_heading: true
+    options:
       heading_level: 3
-
-### ::: lexos.cluster.seetrees.SeeTrees.__init__
-
-    rendering:
       show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+## The `comparison` Classes
+
+### ::: lexos.cluster.seetrees.comparison.ComparisonPlot
+
+    options:
       heading_level: 3
-
-### ::: lexos.cluster.seetrees.SeeTrees._init_from_dtm
-
-    rendering:
       show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+### ::: lexos.cluster.seetrees.comparison.DifferencePlot
+
+    options:
       heading_level: 3
-
-### ::: lexos.cluster.seetrees.SeeTrees._init_from_stylo_res
-
-    rendering:
       show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+### ::: lexos.cluster.seetrees.comparison.OverlayPlot
+
+    options:
       heading_level: 3
-
-### ::: lexos.cluster.seetrees.SeeTrees._init_from_raw
-
-    rendering:
       show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+## The `density_plot` Class
+
+### ::: lexos.cluster.seetrees.density_plot.DensityPlot
+
+    options:
       heading_level: 3
-
-### ::: lexos.cluster.seetrees.SeeTrees._init_labels
-
-    rendering:
       show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+## The `projection_plot` Classes
+
+### ::: lexos.cluster.seetrees.projection_plot.ProjectionPlot
+
+    options:
       heading_level: 3
-
-### ::: lexos.cluster.seetrees.SeeTrees.compare_scores
-
-    rendering:
       show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+### ::: lexos.cluster.seetrees.projection_plot.MDS
+
+    options:
       heading_level: 3
-
-### ::: lexos.cluster.seetrees.SeeTrees.compute_distances
-
-    rendering:
       show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+### ::: lexos.cluster.seetrees.projection_plot.PCA
+
+    options:
       heading_level: 3
-
-### ::: lexos.cluster.seetrees.SeeTrees.view_distances
-
-    rendering:
       show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+## The `tree` Class
+
+### ::: lexos.cluster.seetrees.tree.Tree
+
+    options:
       heading_level: 3
-
-### ::: lexos.cluster.seetrees.SeeTrees.view_scores
-
-    rendering:
       show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+## The `zscores` Classes
+
+### ::: lexos.cluster.seetrees.zscores.ZscorePlot
+
+    options:
       heading_level: 3
-
-### ::: lexos.cluster.seetrees.SeeTrees.view_tree
-
-    rendering:
       show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+### ::: lexos.cluster.seetrees.zscores.DistinctiveFeaturePlot
+
+    options:
       heading_level: 3
+      show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
+
+### ::: lexos.cluster.seetrees.zscores.FeatureSummary
+
+    options:
+      heading_level: 3
+      show_root_heading: true
+      show_root_toc_entry: true
+      show_signature: true
+      show_signature_annotations: true
+      members_order: source
+      extensions: []
+
+    members: true
