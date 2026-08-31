@@ -16,14 +16,25 @@ The Lexos Python library is designed to implement many common text analysis proc
 - Performs text pre-processing ("scrubbing") and splitting ("cutting").
 - Performs tokenization and trains language models using [spaCy](https://spacy.io/){target="_blank"}.
 - Creates assorted visualizations of term vectors.
-- Performs hierarchical and kmeans clustering.
+- Performs hierarchical and kmeans clustering with a variety of visualizations for text comparisons..
+- Performs classification using [spaCy](https://spacy.io/){target="_blank"}, [scikit-learn](https://scikit-learn.org/stable/){target="_blank"}, and custom architectures.
 - Generates topic models and topic model visualizations using [MALLET](https://github.com/mimno/Mallet){target="_blank"} and [DFR Browser 2](https://github.com/scottkleinman/dfr-browser2){target="_blank"}.
 
 And more!
 
+## Changes in v0.2.0-beta
+
+- Performance improvements and bug fixes througout.
+- Simplified public API.
+- New and improved clustering visualizations.
+- New `classification` and `structural_stylometry` modules.
+- Enhanced topic modeling visualizations.
+- Improved documentation and tutorials for new users (now in a separate [lexos-docs](https://github.com/scottkleinman/lexos-docs){target="_blank"} repository).
+
+
 ## Project Status
 
-The Lexos API is currently in beta. Most of the core functionality of the Lexos web app, along with new features, has been implemented and documented. As of August 2027, the API is considered feature complete and stable for general use, but some rough edges remain. Feedback is welcome.
+The Lexos API is currently in beta. Most of the core functionality of the Lexos web app, along with new features, has been implemented and documented. As of August 2026, the API is considered feature complete and stable for general use, but some rough edges remain. Feedback is welcome.
 
 The beta release coincides with at a time when the landscape of digital tools is rapidly evolving and AI-assisted coding is becoming more prevalent. I am waiting to see whether there is significant adoption of the Lexos library before investing more time in developing new features. If you like Lexos, you can help by requesting new features in the [GitHub issues](https://github.com/scottkleinman/uv_lexos/issues){target="_blank"} (labelled as "enhancement") or [contributing](development/index.md) them yourself.
 
