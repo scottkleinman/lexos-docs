@@ -65,7 +65,7 @@ of the Lexos API modules:
         <tr class="row-even">
             <td><a class="" href="tokenizer/" title="api_lexos.tokenizer"><code>tokenizer</code></a></td>
             <td>A set of functions used to convert texts into spaCy tokenised
-            <a href="https://spacy.io/" target="_blank">spaCy</a> docs and to manipulate those docs.</td>
+            [spaCy](https://spacy.io/){target="_blank"} docs and to manipulate those docs.</td>
         </tr>
         <tr class="row-odd">
             <td><a class="" href="topic-modeling/" title="api_lexos.topic_modeling"><code>topic_modeling</code></a></td>
