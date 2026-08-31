@@ -302,4 +302,3 @@ fig.write_html("my_chart.html", include_plotlyjs="cdn")
 ```
 
 For available parameters in `write_html`, see the [Plotly documentation](https://plotly.github.io/plotly.py-docs/generated/plotly.io.write_html.html){target="_blank"}.
-
