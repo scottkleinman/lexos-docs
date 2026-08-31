@@ -48,6 +48,7 @@ nav:
         - Topwords: user_guide/topwords.md
         - Keywords in Context (KWIC): user_guide/kwic.md
         - Structural Stylometry: user_guide/structural_stylometry/index.md
+      - Classifying Texts: user_guide/classifying_texts.md
       - Topic Modelling:
         - Topic Modeling with MALLET: user_guide/topic_modeling/mallet.md
         - Exploring MALLET Topic Models with DFR Browser 2: user_guide/topic_modeling/dfr_browser2.md
@@ -68,6 +69,11 @@ nav:
           - plotly_dendrogram: api/cluster/plotly_dendrogram.md
           - seetrees: api/cluster/seetrees.md
           - sync_script.md: api/cluster/sync_script.md
+      - classification:
+          - Overview: api/classification/index.md
+          - classifier: api/classification/classifier.md
+          - sklearn_pipeline: api/classification/sklearn_pipeline.md
+          - spacy_pipeline: api/classification/spacy_pipeline.md
       - constants: api/constants.md
       - corpus:
           - Overview: api/corpus/index.md
