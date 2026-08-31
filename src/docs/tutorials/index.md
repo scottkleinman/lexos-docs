@@ -14,8 +14,9 @@ Here is a list of the currently available tutorials, organised by module:
 
 - Dendrograms (Hierarchical Agglomerative Clustering): [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/dendrogram_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/data.zip){target="_blank"}
 - Clustermaps (Hierarchical Agglomerative Clustering): [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/clustermap_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/data.zip){target="_blank"}
-- Bootstrap Consenus Trees (Hierarchical Agglomerative Clustering): [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/bct_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/bct_data.zip){target="_blank"}
-- K-Means Clustering: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/kmeans_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/FilesToUse.zip){target="_blank"}
+- Bootstrap Consenus Trees (Hierarchical Agglomerative Clustering): [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/bct_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/data.zip){target="_blank"}
+- K-Means Clustering: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/kmeans_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/data.zip){target="_blank"}
+- SeeTrees: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/seetrees_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/seetrees_data.zip){target="_blank"}
 
 ## Corpus
 
