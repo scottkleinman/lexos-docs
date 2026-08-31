@@ -24,13 +24,17 @@ And more!
 
 ## Changes in v0.2.0-beta
 
-- Performance improvements and bug fixes througout.
-- Simplified public API.
+- Performance optimizations and bug fixes througout.
+- A simplified public API.
+- Better HTML and XML tag handling in Scrubber.
 - New and improved clustering visualizations.
-- New `classification` and `structural_stylometry` modules.
-- Enhanced topic modeling visualizations.
+- Improved plotting functions in Bootstrap Consensus clustering.
+- Silhouette score analysis for KMeans clustering.
+- More advanced topic modelling features, including termite plots, customisable labels, and LLM-generated labels with local or cloud-based models.
+- A new Classification module that performs text classification using a variety of architectures.
+- A new Structural Stylometry module that allows you to assess the significance of punctuation and whitespace patterns in your documentation.
+- Language model training features.
 - Improved documentation and tutorials for new users (now in a separate [lexos-docs](https://github.com/scottkleinman/lexos-docs){target="_blank"} repository).
-
 
 ## Project Status
 
