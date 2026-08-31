@@ -3,7 +3,7 @@
 This page provides a general overview of code conventions used in the Lexos project.
 
 !!! note
-    Some discussion and examples in this coding guide are reproduced from spaCy's very well-documented <a href="https://github.com/explosion/spaCy/blob/master/extra/DEVELOPER_DOCS/Code%20Conventions.md" target="_blank">code conventions</a>, which we consider an excellent guide to best practices. Adjustments have been made where Lexos differs from or adds to spaCy's guidelines.
+    Some discussion and examples in this coding guide are reproduced from spaCy's very well-documented [code conventions](https://github.com/explosion/spaCy/blob/master/extra/DEVELOPER_DOCS/Code%20Conventions.md){target="_blank"}, which we consider an excellent guide to best practices. Adjustments have been made where Lexos differs from or adds to spaCy's guidelines.
 
 ## Policy on AI-Assisted Contributions
 
@@ -83,10 +83,10 @@ The only caveat on type hinting is if fully-descriptive type hints become too ve
 
 All functions and methods you write should be documented with a docstring inline. The docstring provides a simple summary, and an overview of the arguments and their types. Modern editors will show this information to users when they call the function or method in their code, and this information is also used to auto-generate the API documentation.
 
-The Lexos project follows the <a href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings" target="_blank">Google Style Python Docstrings</a> for docstrings. This is a widely used style guide that provides a consistent format for writing docstrings in Python code. It is recommended to follow this style guide for all docstrings in the Lexos project.
+The Lexos project follows the [Google Style Python Docstrings](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings){target="_blank"} for docstrings. This is a widely used style guide that provides a consistent format for writing docstrings in Python code. It is recommended to follow this style guide for all docstrings in the Lexos project.
 
 !!! note
-    The Lexos project uses <a href="https://www.mkdocs.org/" target="_blank">MkDocs</a> to generate API documentation from directly docstrings. The API documentation is automatically generated from the docstrings in the codebase, so it is important to keep the docstrings up to date and consistent with the code.
+    The Lexos project uses [MkDocs](https://www.mkdocs.org/){target="_blank"} to generate API documentation from directly docstrings. The API documentation is automatically generated from the docstrings in the codebase, so it is important to keep the docstrings up to date and consistent with the code.
 
 The basic structure of a docstring in the Google Style is as follows:
 
@@ -158,7 +158,7 @@ If any of the TODOs you've added are important and should be fixed soon, you sho
 
 ## Formatting Strings
 
-Wherever possible, use <a href="https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals" target="_blank">f-strings</a> for any formatting of strings.
+Wherever possible, use [f-strings](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals){target="_blank"} for any formatting of strings.
 
 ## Structuring Logic
 
@@ -178,11 +178,11 @@ Try to avoid writing functions and methods with too many arguments, and use keyw
 This makes the function calls easier to read, because it is immediately clear what the additional values mean. It also makes it easier to extend arguments or change their order later on, because you don't end up with any function calls that depend on a specific positional order.
 
 !!! important
-    User-facing functions and methods that accept data should be validated with <a href="https://docs.pydantic.dev/latest/" target="_blank">Pydantic</a>. Note that Pydantic enforces the use of keyword arguments instead of positional arguments.
+    User-facing functions and methods that accept data should be validated with [Pydantic](https://docs.pydantic.dev/latest/){target="_blank"}. Note that Pydantic enforces the use of keyword arguments instead of positional arguments.
 
 ### Avoid Mutable Default Arguments
 
-A common Python gotcha are <a href="https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments" target="_blank">mutable default arguments</a>: if your argument defines a mutable default value like `[]` or `{}` and then goes and mutates it, the default value is created _once_ when the function is created and the same object is then mutated every time the function is called. This can be pretty unintuitive when you first encounter it. We therefore avoid writing logic that does this.
+A common Python gotcha are [mutable default arguments](https://docs.python-guide.org/writing/gotchas/#mutable-default-arguments){target="_blank"}: if your argument defines a mutable default value like `[]` or `{}` and then goes and mutates it, the default value is created _once_ when the function is created and the same object is then mutated every time the function is called. This can be pretty unintuitive when you first encounter it. We therefore avoid writing logic that does this.
 
 ### Don't Use `try`/`except` for Control Flow
 
@@ -220,7 +220,7 @@ If you have to use `try`/`except`, make sure to only include what's **absolutely
 
 ### Avoid Lambda Functions
 
-`lambda` functions can be useful for defining simple anonymous functions in a single line, but they also introduce problems: for instance, they require <a href="https://stackoverflow.com/questions/25348532/can-python-pickle-lambda-functions" target="_blank">additional logic</a> in order to be pickled and are pretty ugly to type-annotate. So we typically avoid them in the code base and only use them in the serialization handlers and within tests for simplicity. Instead of `lambda`s, check if your code can be refactored to not need them, or use helper functions instead.
+`lambda` functions can be useful for defining simple anonymous functions in a single line, but they also introduce problems: for instance, they require [additional logic](https://stackoverflow.com/questions/25348532/can-python-pickle-lambda-functions){target="_blank"} in order to be pickled and are pretty ugly to type-annotate. So we typically avoid them in the code base and only use them in the serialization handlers and within tests for simplicity. Instead of `lambda`s, check if your code can be refactored to not need them, or use helper functions instead.
 
 ```diff
 - split_string: Callable[[str], List[str]] = lambda value: [v.strip() for v in value.split(",")]
@@ -261,7 +261,7 @@ If your logic is more complex, it's often better to write a loop instead, even i
 The core library never `print`s anything. While we encourage using `print` statements for simple debugging (it's the most straightforward way of looking at what's happening), make sure to clean them up once you're ready to submit your pull request. If you want to output warnings or debugging information for users, use the respective dedicated mechanisms for this instead (see sections on warnings and logging for details).
 
 !!! note
-    We make occasional exceptions to this guideline. For instance, when the `topic_modeling/mallet` module calls the Java Mallet tool, it uses the <code><a href="https://github.com/explosion/wasabi" target="_blank">wasabi</a></code> and code><a href="https://github.com/Textualize/rich" target="_blank">rich</a></code> libraries to provide aesthetically pleasing console output that tracks the progress of the Java feedback.
+    We make occasional exceptions to this guideline. For instance, when the `topic_modeling/mallet` module calls the Java Mallet tool, it uses the <code>[wasabi](https://github.com/explosion/wasabi){target="_blank"}</code> and code>[rich](https://github.com/Textualize/rich){target="_blank"}</code> libraries to provide aesthetically pleasing console output that tracks the progress of the Java feedback.
 
 ## Naming
 
@@ -303,7 +303,7 @@ except ValueError as e:
     raise LexosException(f"Something went wrong: {e}")
 ```
 
-The second example exemplifes what we might do if we anticipate possible errors in third-party code that we don't control, or our own code in a very different context, we typically try to provide custom and more specific error messages if possible. This is an example of <a href="https://docs.python.org/3/tutorial/errors.html#exception-chaining" target="_blank">re-raising from</a> the original caught exception so the user sees both the original error, as well as the custom message.
+The second example exemplifes what we might do if we anticipate possible errors in third-party code that we don't control, or our own code in a very different context, we typically try to provide custom and more specific error messages if possible. This is an example of [re-raising from](https://docs.python.org/3/tutorial/errors.html#exception-chaining){target="_blank"} the original caught exception so the user sees both the original error, as well as the custom message.
 
 Note that if you are designing an app that uses Lexos in its backend, Python errors are not necessarily what you want to relay to your user interface. Using the `LexosException` class to pass custom errors helps solve this problem.
 
@@ -343,8 +343,8 @@ Code prepared for the Lexos project should undergo linting and formatting to det
 
 Lexos uses two tools for checking for linting and formatting errors:
 
-- <code><a href="https://docs.astral.sh/ruff/" target="_blank">ruff</a></code>: an opinionated linter and formatter
-- <code><a href="https://pre-commit.com/" target="_blank">pre-commit</a></code>: a tool for running tests and fixing errors before code is committed to the project repository
+- <code>[ruff](https://docs.astral.sh/ruff/){target="_blank"}</code>: an opinionated linter and formatter
+- <code>[pre-commit](https://pre-commit.com/){target="_blank"}</code>: a tool for running tests and fixing errors before code is committed to the project repository
 
 Code you write should be compatible with our the default `ruff` rules and the Lexos `pre-commit` hooks. It should not cause any errors or warnings.
 
@@ -372,7 +372,7 @@ uv run ruff check . --fix
 uv run ruff format .
 ```
 
-You can also run `ruff` in your code editor. For example, if you're using <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a>, you can install the <a href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff" target="_blank">Ruff</a> extension and set up `ruff` as the default formatter. Add the following to your `settings.json` (in the command pallette, type `Preferences: Open Settings (JSON)`):
+You can also run `ruff` in your code editor. For example, if you're using [Visual Studio Code](https://code.visualstudio.com){target="_blank"}, you can install the [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff){target="_blank"} extension and set up `ruff` as the default formatter. Add the following to your `settings.json` (in the command pallette, type `Preferences: Open Settings (JSON)`):
 
 ```json
 {
@@ -391,7 +391,7 @@ Before committing code, you should ensure that it contains no linting and format
 
 ### Using `pre-commit`
 
-As a further check, you should run <code><a href="https://pre-commit.com/" target="_blank">pre-commit</a></code>. This tool provides various hooks to check your code for stylistic conformity and consistency. It should be installed when you create your development environment.
+As a further check, you should run <code>[pre-commit](https://pre-commit.com/){target="_blank"}</code>. This tool provides various hooks to check your code for stylistic conformity and consistency. It should be installed when you create your development environment.
 
 Start by installing the Lexos `pre-commit` hooks in your environment with
 

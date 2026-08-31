@@ -1,6 +1,6 @@
 # Lexos Tests
 
-Lexos uses the <a href="http://doc.pytest.org/" target="_blank">pytest</a> framework for testing. For more info on this, see the <a href="(http://docs.pytest.org/en/latest/contents.html" target="_blank">pytest documentation</a>.
+Lexos uses the [pytest](http://doc.pytest.org/){target="_blank"} framework for testing. For more info on this, see the <a href="(http://docs.pytest.org/en/latest/contents.html" target="_blank">pytest documentation</a>.
 
 Tests for Lexos modules and classes live in their own directories of the same name. For example, tests for the `Tokenizer` can be found in `/tests/tokenizer`. To be interpreted and run, all test files and test functions need to be prefixed with `test_`.
 

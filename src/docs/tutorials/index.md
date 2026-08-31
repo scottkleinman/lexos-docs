@@ -6,106 +6,78 @@ Each tutorial notebook should be downloaded in your chosen notebook environment 
 
 Here is a list of the currently available tutorials, organised by module:
 
+## Classification
+
+- Classification: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/classification/tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/classification/data.zip){target="_blank"}
+
 ## Cluster
 
-<ul>
-<li>Dendrograms (Hierarchical Agglomerative Clustering): <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/dendrogram_tutorial.ipynb">📓 Notebook</a> | <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/data.zip">🗄️ Data</a></li>
-<li>Clustermaps (Hierarchical Agglomerative Clustering): <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/clustermap_tutorial.ipynb">📓 Notebook</a> | <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/data.zip">🗄️ Data</a></li>
-<li>Bootstrap Consenus Trees (Hierarchical Agglomerative Clustering): <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/bct_tutorial.ipynb">📓 Notebook</a> | <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/bct_data.zip">🗄️ Data</a></li>
-<li>K-Means Clustering: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/kmeans_tutorial.ipynb">📓 Notebook</a> | <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/FilesToUse.zip">🗄️ Data</a></li>
-</ul>
+- Dendrograms (Hierarchical Agglomerative Clustering): [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/dendrogram_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/data.zip){target="_blank"}
+- Clustermaps (Hierarchical Agglomerative Clustering): [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/clustermap_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/data.zip){target="_blank"}
+- Bootstrap Consenus Trees (Hierarchical Agglomerative Clustering): [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/bct_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/bct_data.zip){target="_blank"}
+- K-Means Clustering: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/kmeans_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cluster/FilesToUse.zip){target="_blank"}
 
 ## Corpus
 
-<ul>
-<li>Corpus Tutorial: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/corpus/corpus_tutorial.ipynb">📓 Notebook</a></li>
-<li>SQLite Tutorial: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/corpus/sqlite_tutorial.ipynb">📓 Notebook</a></li>
-</ul>
+- Corpus Tutorial: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/corpus/corpus_tutorial.ipynb){target="_blank"}
+- SQLite Tutorial: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/corpus/sqlite_tutorial.ipynb){target="_blank"}
 
 ## Cutter
 
-<ul>
-<li>Text Cutter and Token Cutter: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cutter/tutorial.ipynb">📓 Notebook</a> | <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cutter/Austen_Pride.txt">🗄️ Data</a></li>
-</ul>
+- Text Cutter and Token Cutter: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cutter/tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/cutter/Austen_Pride.txt){target="_blank"}
 
 ## DTM
 
-<ul>
-<li>Making and Using a Document-Term Matrix: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/dtm/tutorial.ipynb">📓 Notebook</a> | <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/dtm/txt_files.zip">🗄️ Data</a></li>
-</ul>
+- Making and Using a Document-Term Matrix: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/dtm/tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/dtm/txt_files.zip){target="_blank"}
 
 ## Filter
 
-<ul>
-<li>Filter Tutorial: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/filter/tutorial.ipynb">📓 Notebook</a></li>
-</ul>
+- Filter Tutorial: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/filter/tutorial.ipynb){target="_blank"}
 
 ## IO
 
-<ul>
-<li>Loading Data: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/io/tutorial.ipynb">📓 Notebook</a> | <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/io/sample_files.zip">🗄️ Data</a></li>
-</ul>
+- Loading Data: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/io/tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/io/sample_files.zip){target="_blank"}
 
 ## Keywords in Context (KWIC)
 
-<ul>
-<li>Keywords in Context (KWIC): <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/kwic/tutorial.ipynb">📓 Notebook</a></li>
-</ul>
+- Keywords in Context (KWIC): [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/kwic/tutorial.ipynb){target="_blank"}
 
 ## Language Model
 
-<ul>
-<li>Fine-tuning a Language Model for Your Texts: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/main/src/docs/tutorials/language_model/tutorial.ipynb">📓 Notebook</a> | <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/main/src/docs/tutorials/language_model/wt_sanitized.conllu">🗄️ Data</a></li>
-<li>Building a Specialized Model (Iterative Workflow): <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/main/src/docs/tutorials/language_model/advanced_workflow.ipynb">📓 Notebook</a></li>
-<li>Transformer-based Training: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/main/src/docs/tutorials/language_model/transformer_tutorial.ipynb">📓 Notebook</a></li>
-</ul>
+- Fine-tuning a Language Model for Your Texts: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/main/src/docs/tutorials/language_model/tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/main/src/docs/tutorials/language_model/wt_sanitized.conllu){target="_blank"}
+- Building a Specialized Model (Iterative Workflow): [📓 Notebook](https://github.com/scottkleinman/lexos/blob/main/src/docs/tutorials/language_model/advanced_workflow.ipynb){target="_blank"}
+- Transformer-based Training: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/main/src/docs/tutorials/language_model/transformer_tutorial.ipynb){target="_blank"}
 
 ## Milestones
 
-<ul>
-<li>Using Milestones: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/milestones/tutorial.ipynb">📓 Notebook</a></li>
-</ul>
+- Using Milestones: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/milestones/tutorial.ipynb){target="_blank"}
 
 ## Rolling Windows
 
-<ul>
-<li>Using Rolling Windows: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/rolling_windows/rolling_windows_tutorial.ipynb">📓 Notebook</a> | <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/rolling_windows/A_Scandal_in_Bohemia.txt">🗄️ Data</a></li>
-</ul>
+- Using Rolling Windows: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/rolling_windows/rolling_windows_tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/rolling_windows/A_Scandal_in_Bohemia.txt){target="_blank"}
 
 ## Scrubber
 
-<ul>
-<li>Using Scrubber: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/scrubber/scrubber_tutorial.ipynb">📓 Notebook</a></li>
-<li>Scrubbing Markup Tags: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/scrubber/tags_tutorial.ipynb">📓 Notebook</a></li>
-</ul>
+- Using Scrubber: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/scrubber/scrubber_tutorial.ipynb){target="_blank"}
+- Scrubbing Markup Tags: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/scrubber/tags_tutorial.ipynb){target="_blank"}
 
 ## Structural Stylometry
 
-<ul>
-<li>Analyzing Structure: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/structural_stylometry/analyzing_structure.ipynb">📓 Notebook</a></li>
-</ul>
+- Analyzing Structure: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/structural_stylometry/analyzing_structure.ipynb){target="_blank"}
 
 ## Tokenizer
 
-<ul>
-<li>Using Tokenizer: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/tokenizer/tutorial.ipynb">📓 Notebook</a> | <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/tokenizer/Austen_Pride.txt">🗄️ Data</a></li>>
-</ul>
+- Using Tokenizer: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/tokenizer/tutorial.ipynb){target="_blank"} | [🗄️ Data](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/tokenizer/Austen_Pride.txt){target="_blank"}>
 
 ## Topic Modeling
 
-<ul>
-<li>Mallet Topic Modeling Tutorial: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/topic_modeling/mallet_tutorial.ipynb">📓 Notebook</a> | 🗄️ Data: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/topic_modeling/litbank_texts.zip">LitBank Texts</a>, <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/topic_modeling/additional_texts.zip">Additional Texts</a></li>
-</ul>
+- Mallet Topic Modeling Tutorial: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/topic_modeling/mallet_tutorial.ipynb){target="_blank"} | 🗄️ Data: [LitBank Texts](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/topic_modeling/litbank_texts.zip){target="_blank"}, [Additional Texts](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/topic_modeling/additional_texts.zip){target="_blank"}
 
 ## TopWords
 
-<ul>
-<li>TopicWords Tutorial: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/topwords/tutorial.ipynb">📓 Notebook</a></li>
-<li>Evaluating Key Terms with the Mann-Whitney U Test: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/topwords/mann_whitney_tutorial.ipynb">📓 Notebook</a></li>
-</ul>
+- TopicWords Tutorial: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/topwords/tutorial.ipynb){target="_blank"}
+- Evaluating Key Terms with the Mann-Whitney U Test: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/topwords/mann_whitney_tutorial.ipynb){target="_blank"}
 
 ## Visualization
 
-<ul>
-<li>Word Clouds: <a target="_blank" href="https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/visualization/tutorial.ipynb">📓 Notebook</a></li>
-</ul>
+- Word Clouds: [📓 Notebook](https://github.com/scottkleinman/lexos/blob/v0.1.0-beta.1/src/docs/tutorials/visualization/tutorial.ipynb){target="_blank"}
