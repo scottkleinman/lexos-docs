@@ -142,4 +142,4 @@ Your terminal prompt should now show `(lexos)` or `(.venv)` at the beginning.
 
 ---
 
-Your local development environment should now be up and running. To install Lexos, follow the instructions in the [Installation](../../installation.md) guide.
+Your local development environment should now be up and running. To install Lexos, follow the instructions in the [Installation](../installation.md) guide.
