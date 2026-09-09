@@ -36,97 +36,35 @@ Standalone functions for preparing and managing CONLL-U training data.
 
 ## The LanguageModel Class
 
-The main entry point for the module. Manages the model directory, generates or loads the spaCy training config, and exposes the training lifecycle as method calls.
+The main entry point for the module is `LanguageModel`, a Pydantic-based configuration object that manages the model directory, training config, and workflow lifecycle. It is intended to be used as follows:
 
-### ::: lexos.language_model.LanguageModel
+```python
+from lexos.language_model import LanguageModel
 
-    rendering:
-      show_root_heading: true
-      heading_level: 3
+model = LanguageModel(
+    model_dir="./model",
+    lang="en",
+    gpu=False,
+    components=["tok2vec", "tagger", "morphologizer", "trainable_lemmatizer", "parser"],
+)
+model.copy_assets(train="train.conllu", dev="dev.conllu")
+model.convert_assets()
+model.train()
+```
 
-### ::: lexos.language_model.LanguageModel.__init__
+Public workflow methods exposed by the class include:
 
-    rendering:
-      show_root_heading: true
-      heading_level: 3
+- `LanguageModel.copy_assets()`
+- `LanguageModel.convert_assets()`
+- `LanguageModel.validate()`
+- `LanguageModel.train()`
+- `LanguageModel.evaluate()`
+- `LanguageModel.package()`
+- `LanguageModel.config_path`
+- `LanguageModel.save_config()`
+- `LanguageModel.load_config()`
 
-### ::: lexos.language_model.LanguageModel.config_path
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel.save_config
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel.load_config
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel.copy_assets
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel.convert_assets
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel.validate
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel.train
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel.evaluate
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel.package
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel._load_recipe
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel._resolve_sources
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel._generate_finetune_config
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model.LanguageModel._apply_config_defaults
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
+This page intentionally avoids rendering the full Pydantic class with `mkdocstrings` because the generated schema for the model field defaults is not currently compatible with the installed `griffe-pydantic` template stack. The public methods above are the stable contract for the training workflow.
 
 ## Debugging Utilities
 
@@ -158,20 +96,8 @@ Wrappers around spaCy's debugging commands for inspecting a model's config and d
 
 ## Internal Helpers
 
-### ::: lexos.language_model._has_nvidia_gpu
+The following helpers are used internally by the training workflow and are not part of the public API contract:
 
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model._get_tok2vec_width
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.language_model._patch_tok2vec_width
-
-    rendering:
-      show_root_heading: true
-      heading_level: 3
+- `_has_nvidia_gpu()`
+- `_get_tok2vec_width()`
+- `_patch_tok2vec_width()`
