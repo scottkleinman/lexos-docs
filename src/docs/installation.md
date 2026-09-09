@@ -32,24 +32,35 @@ pip install -U lexos
 
 ## Downloading Language Models
 
-Many features of Lexos use language models created for the Python [`spaCy`](https://spacy.io/){target="_blank"} natural language processing library. When you install Lexos, spaCy's multi-language model [`xx_sent_ud_sm`](https://spacy.io/models/xx#xx_sent_ud_sm){target="_blank"} and small English model [`en_core_web_sm`](https://spacy.io/models/en#en_core_web_sm){target="_blank"} are installed. For information on how Lexos uses language models, see [Tokenizing Texts](user_guide/tokenizing_texts.md).
+Many features of Lexos use language models created for the Python [`spaCy`](https://spacy.io/){target="_blank"} natural language processing library. It is good practice to download spaCy's multi-language model [`xx_sent_ud_sm`](https://spacy.io/models/xx#xx_sent_ud_sm){target="_blank"} and, if possible, a small model for your chosen language (e.g. [`en_core_web_sm`](https://spacy.io/models/en#en_core_web_sm){target="_blank"}). To do this, run the following additional command:
 
-## Downloading Additional Language Models (Optional)
+```bash
+uv run python download_spacy_models.py xx_sent_ud_sm en_core_web_sm
+```
+
+or
+
+```bash
+python download_spacy_models.py xx_sent_ud_sm en_core_web_sm
+```
+
+You can download as many models as you want by separating their names with spaces.
 
 The `xx_sent_ud_sm` model is a minimal model that can be used for sentence and token segmentation in a variety of languages, while the `en_core_web_sm` model is specifically for English text. If you are working in another language or need a larger language, you may need to download additional language models. You can find information on available models on the [`spaCy` models](https://spacy.io/models){target="_blank"} page.
 
-To download a model (for instance, the small Chinese model `zh_core_web_sm`), you can run the following commands in your terminal.
+It is recommended to download the language models before using Lexos to ensure all features work correctly. If you try to use a Lexos module that requires a language model without performing this step, Lexos will attempt to download the default `xx_sent_ud_sm` model. For information on how Lexos uses language models, see [Tokenizing Texts](user_guide/tokenizing_texts.md).
 
-If you are using `uv`, run:
+!!! note
+    The native spaCy download command `uv run python -m spacy download xx_sent_ud_sm` or `python -m spacy download xx_sent_ud_sm` should also work.
 
-```bash
-uv run python -m spacy download zh_core_web_sm
-```
+## Downloading Language Models Using Python
 
-or, if you are not using `uv`, you can run:
+If you are working in Python, Lexos has a helper function to download models programmatically. You can use the `lexos.download_spacy_model` function to download any spaCy model. For instance, to download the small Chinese model `zh_core_web_sm`, you can use the following code:
 
-```bash
-python -m spacy download zh_core_web_sm
+```python
+from lexos.util import download_spacy_model
+
+download_spacy_model("zh_core_web_sm")
 ```
 
 ## Verify Installation
@@ -72,6 +83,7 @@ You can also check the installation by running the following code:
 
 ```python
 import lexos
+
 lexos.get_info()
 ```
 
@@ -106,7 +118,7 @@ Make sure you have installed [`uv`](https://docs.astral.sh/uv/){target="_blank"}
 **Issue:** You see `Permission denied` when installing packages.
 
 **Solution:**
-Always use a virtual environment for Lexos. If you must install globally, you may need to use `sudo` on Mac and Linux systems, but this is not recommended. Prefer using a virtual environment to avoid permission issues.
+Always use a virtual environment for Lexos. It is not recommended that you install Lexos globally, but, if you must do so, you may need to use `sudo` on Mac and Linux systems to avoid permission issues.
 
 ### 4. spaCy Model Not Found
 
@@ -116,9 +128,9 @@ Always use a virtual environment for Lexos. If you must install globally, you ma
 Install the required spaCy model using one of the following commands:
 
 ```bash
-uv run python -m spacy download en_core_web_sm
+uv run python download_spacy_models.py en_core_web_sm
 # or, if not using uv:
-python -m spacy download en_core_web_sm
+python download_spacy_models.py en_core_web_sm
 ```
 
 ### 5. Lexos Not Found After Installation

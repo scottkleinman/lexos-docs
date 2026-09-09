@@ -1,6 +1,6 @@
 [project]
 name = "lexos_documentation"
-version = "0.2.0b0"
+version = "0.2.0"
 description = "Documentation for the Lexos Python library."
 readme = "README.md"
 license = "MIT"

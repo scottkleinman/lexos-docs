@@ -122,32 +122,6 @@ uv sync
 
 This creates a `.venv` directory and installs all dependencies listed in `pyproject.toml`.
 
-### Installing SpaCy
-
-Lexos relies on the [spaCy](https://spacy.io/){target="_blank"} for Natural Language Processing library for much of its functionality. SpaCy itself is written in Cython, which compiles Python code into C or C++ for better memory management. However, Cython does not come pre-installed in vanilla downloads of Python, and, as of June 2025, the spaCy installer wheels cannot themselves install all of Cython's dependencies (or cannot do so for all common operating systems and processors). This, at least, is our theory of why installation of spaCy fails when you call `uv sync` in a vanilla installation of Python. To remedy the problem, we recommend that you install [Anaconda](https://www.anaconda.com/download){target="_blank"}, which is distributed with Cython. This should allow spaCy to install correctly.
-
-The alternative is to install Cython's dependencies, and then Cython, independently. Cython requires a GCC-compatible C compiler to be present on your system. We have not thoroughly tested the following procedure, but it has worked in the a linux environment running on Windows 11 with an ARM64 processor (a challenging setup).
-
-```bash
-sudo apt-get install build-essential python3-dev
-uv pip install cython
-```
-
-The first command will install `build-essential`, which provides the C compiler and other development tools, along with the Python development headers. We have read that there may be some discrepancy between the installation paths used by `uv` and `pip`. To be safe, we suggest trying to install Cython using `pip` as shown in the command above. You may need to install `pip` in your environment first.
-
-Once you have a working version of Cython, `uv sync` should properly install spaCy.
-
-### Installing SpaCy Models
-
-SpaCy itself is installed as a dependency package via `uv`; however, its language models are downloaded as a separate process from urls. The two default models, "xx_sent_ud_sm" and "en_core_web_sm", are downloaded and installed automatically from commands in `pyproject.toml` when you run `uv sync`. If for any reason this fails, you can manually download the models. From your activated virtual environment in the project root, run:
-
-```bash
-uv run python -m spacy download xx_sent_ud_sm
-uv run python -m spacy download en_core_web_sm
-```
-
-You can also use these commands to download additional models, if required.
-
 ## Activate the Virtual Environment
 
   `uv` commands will intelligently activate the virtual environment when you run them. However, for other commands (like `python` or `pip`), you need to activate the virtual environment manually. So it's a good idea to do this every time you start a new terminal session.
@@ -168,4 +142,4 @@ Your terminal prompt should now show `(lexos)` or `(.venv)` at the beginning.
 
 ---
 
-Your local development environment should now be up and running.
+Your local development environment should now be up and running. To install Lexos, follow the instructions in the [Installation](../../installation.md) guide.
