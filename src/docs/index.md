@@ -1,4 +1,4 @@
-![v0.2.0](https://img.shields.io/badge/version-v0.2.0-blue)
+![v0.2.2](https://img.shields.io/badge/version-v0.2.2-blue)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/release/python-312/)
 [![Python wheels](https://img.shields.io/badge/wheels-%E2%9C%93-4c1.svg?longCache=true&style=flat-square&logo=python&logoColor=white)](https://github.com/scottkleinman/lexos/releases)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg?style=flat-square)](https://github.com/ambv/ruff)
@@ -56,8 +56,5 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 ## Citation Information
 
-Kleinman, S., (2026). Lexos. v0.2.0-pre-release [https://github.com/scottkleinman/lexos](https://github.com/scottkleinman/lexos).
+Kleinman, S., (2026). Lexos. v0.2.2 [https://github.com/scottkleinman/lexos](https://github.com/scottkleinman/lexos).
 
-<!-- Retained as a template for future releases once they have DOIs -->
-Kleinman, S., (2026). Lexos. v0.1.0b3 [https://github.com/scottkleinman/lexos](https://github.com/scottkleinman/lexos). [doi:10.5281/zenodo.18157848](https://zenodo.org/records/18157848){target="_blank"}.
--->

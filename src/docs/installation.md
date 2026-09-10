@@ -30,30 +30,37 @@ By default, `uv` installs the latest version of Lexos. To update to the latest v
 pip install -U lexos
 ```
 
-## Downloading Language Models
+## Download Language Models
 
-Many features of Lexos use language models created for the Python [`spaCy`](https://spacy.io/){target="_blank"} natural language processing library. It is good practice to download spaCy's multi-language model [`xx_sent_ud_sm`](https://spacy.io/models/xx#xx_sent_ud_sm){target="_blank"} and, if possible, a small model for your chosen language (e.g. [`en_core_web_sm`](https://spacy.io/models/en#en_core_web_sm){target="_blank"}). To do this, run the following additional command:
+Many features of Lexos use language models created for the Python [`spaCy`](https://spacy.io/){target="_blank"} natural language processing library.
+
+!!! note
+    For information on how Lexos uses language models, see [Tokenizing Texts](user_guide/tokenizing_texts.md).
+
+To ensure all features work correctly, it is recommended to download spaCy's multi-language model [`xx_sent_ud_sm`](https://spacy.io/models/xx#xx_sent_ud_sm){target="_blank"} and, if possible, a small model for your chosen language (e.g. [`en_core_web_sm`](https://spacy.io/models/en#en_core_web_sm){target="_blank"}) *before* using Lexos. If you try to use a Lexos module that requires a language model without performing this step, Lexos will attempt to download `xx_sent_ud_sm` model automatically.
+
+To download the language models in advance, run the following additional command:
 
 ```bash
-uv run python download_spacy_models.py xx_sent_ud_sm en_core_web_sm
+uv run download-spacy-models xx_sent_ud_sm en_core_web_sm
 ```
 
 or
 
 ```bash
-python download_spacy_models.py xx_sent_ud_sm en_core_web_sm
+python download-spacy-models xx_sent_ud_sm en_core_web_sm
 ```
 
 You can download as many models as you want by separating their names with spaces.
 
 The `xx_sent_ud_sm` model is a minimal model that can be used for sentence and token segmentation in a variety of languages, while the `en_core_web_sm` model is specifically for English text. If you are working in another language or need a larger language, you may need to download additional language models. You can find information on available models on the [`spaCy` models](https://spacy.io/models){target="_blank"} page.
 
-It is recommended to download the language models before using Lexos to ensure all features work correctly. If you try to use a Lexos module that requires a language model without performing this step, Lexos will attempt to download the default `xx_sent_ud_sm` model. For information on how Lexos uses language models, see [Tokenizing Texts](user_guide/tokenizing_texts.md).
-
 !!! note
-    The native spaCy download command `uv run python -m spacy download xx_sent_ud_sm` or `python -m spacy download xx_sent_ud_sm` should also work.
+    There are a number of alternative ways to install spaCy models from the command line. For instance, you can run the download command as a Python module: `python -m lexos.download_spacy_models xx_sent_ud_sm` or `uv run python -m lexos.download_spacy_models xx_sent_ud_sm`.
 
-## Downloading Language Models Using Python
+    The native spaCy download command should also work:  `uv run python -m spacy download xx_sent_ud_sm` or `python -m spacy download xx_sent_ud_sm`.
+
+### Downloading Language Models Using Python
 
 If you are working in Python, Lexos has a helper function to download models programmatically. You can use the `lexos.download_spacy_model` function to download any spaCy model. For instance, to download the small Chinese model `zh_core_web_sm`, you can use the following code:
 

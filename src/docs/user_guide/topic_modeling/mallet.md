@@ -4,27 +4,19 @@
 
 Topic modeling is a statistical method for discovering abstract themes or "topics" within a collection of documents. [MALLET](https://mimno.github.io/Mallet/topics.html){target="_blank"} is a mature tool for topic modeling used widely in the Humanities. It is a Java package that needs to be installed separately from Lexos. The Lexos `mallet` module provides a straightforward wrapper for running MALLET, managing outputs, and creating visualizations of your topic model.
 
-For more on topic modeling and installing MALLET, see Shawn Graham, Scott Weingart, and Ian Milligan's tutorial [Getting Started with Topic Modeling and MALLET](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet){target="_blank"}.
-
 The Lexos `mallet` module integrates Maria Antoniak's [Litte Mallet Wrapper](https://github.com/maria-antoniak/little-mallet-wrapper){target="_blank"} functions with a slightly simplified API that manages file paths. For more advanced methods of exploring a topic model, see the Lexos integration of [DFR Browser 2](dfr_browser2.md).
 
 In the examples below, we will use a sample dataset of English-language fiction from David Bamman's [LitBank](https://github.com/DBamman/litbank). Additional texts were collected by Allen Riddell for [TAToM: Text Analysis with Topic Models for the Humanities and Social Sciences](https://github.com/ariddell/tatom).
 
----
+## Installing MALLET
 
-## Import the `Mallet` class from the `mallet` Module
+MALLET does not come packaged with Lexos; it must be installed separately. Lexos can interface with MALLET through one of two backends: a wrapper for the original Java-based MALLET binary or through David Mimno's more recent port of MALLET to Rust, which is accessible through the PyRMallet Python binding. The latter has a much simpler installation procedure.
 
-First, import the `Mallet` class and helper functions from the Lexos `mallet` module.
+### Using the Java Backend
 
-```python
-from lexos import Mallet, import_docs, import_files, read_file, read_dirs
-```
+To use the original Java-based MALLET binary, you need to download and install MALLET from its official website. Once installed, ensure that the MALLET binary is accessible from your system's PATH or note its installation path for later use. You will also need to have the Java Developer's Kit (JDK) installed on your system. For useful account of the installation procedure, Shawn Graham, Scott Weingart, and Ian Milligan's tutorial [Getting Started with Topic Modeling and MALLET](https://programminghistorian.org/en/lessons/topic-modeling-and-mallet){target="_blank"}.
 
----
-
-## Check Mallet Installation
-
-Verify that MALLET is installed and accessible by calling the MALLET binary. For instance, if your MALLET binary is located at `~/mallet/bin`, you can run the following command in a terminal:
+After installation, you should verify that MALLET is correctly installed and accessible from your system's PATH. For instance, if your MALLET binary is located at `~/mallet/bin`, you can run the following command in a terminal:
 
 ```bash
 ~/mallet/bin/mallet
@@ -37,9 +29,31 @@ mallet_binary_path = "/path/to/mallet"
 !$mallet_binary_path
 ```
 
-If you receive a list of commands, MALLET is installed and the path is correct.
+If you receive a list of commands, MALLET is installed and the path is correct. Alternatively, on the command line, you can type the path to your MALLET binary and hit Enter. You should see the same list of commands.
 
-Or on the command line, type the path to your MALLET binary and hit Enter. You should see the same list of commands.
+### Using the PyRMallet Backend
+
+PyRMallet is a Python binding for David Mimno's Rust port of MALLET, which simplifies the installation process compared to the original Java-based MALLET binary. To use PyRMallet, you need to do is install it via pip:
+
+```bash
+pip install pyrmallet
+```
+
+or, if you are using `uv`, you can add it to your environment with
+
+```bash
+uv add pyrmallet
+```
+
+---
+
+## Import the `Mallet` class from the `mallet` Module
+
+First, import the `Mallet` class and helper functions from the Lexos `mallet` module.
+
+```python
+from lexos import Mallet, import_docs, import_files, read_file, read_dirs
+```
 
 ---
 
@@ -106,6 +120,9 @@ model_dir = "mallet_model"
 path_to_mallet = "/path/to/your/mallet/binary"
 mallet_model = Mallet(model_dir=model_dir, path_to_mallet=path_to_mallet)
 ```
+
+!!! note
+    By default, the `Mallet` class uses the Java backend and requires path to your MALLET binary file. If you are using the PyRMallet backend, you do not need to provide the path to the MALLET binary (although a default path will be stored in your model's metadata).
 
 Now import your training data into the model instance with `import_data`.
 

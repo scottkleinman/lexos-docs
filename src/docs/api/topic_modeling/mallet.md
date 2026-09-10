@@ -3,7 +3,9 @@
 
 Topic modeling is a statistical method for discovering abstract themes or "topics" within a collection of documents. MALLET is a mature tool for topic modeling used widely in the Humanities. It is a Java package that needs to be installed separately from Lexos. The Lexos `mallet` module provides a straightforward wrapper for running MALLET, managing outputs, and creating visualizations of your topic model.
 
-## Main Functions and MALLET Class
+The current public API is exported from `lexos.topic_modeling.mallet` and includes both the Java-backed `Mallet` implementation and the optional `PyRMallet` backend.
+
+## Public API
 
 ### ::: lexos.topic_modeling.mallet.MALLET_BINARY_PATH
     rendering:
@@ -30,76 +32,55 @@ Topic modeling is a statistical method for discovering abstract themes or "topic
       show_root_heading: true
       heading_level: 3
 
+## Model classes
+
 ### ::: lexos.topic_modeling.mallet.Mallet
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.topic_modeling.mallet.Mallet._metadata_get
+### ::: lexos.topic_modeling.mallet.PyRMallet
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.topic_modeling.mallet.Mallet._metadata_has
+## Model workflow methods
+
+### ::: lexos.topic_modeling.mallet.Mallet.import_data
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.topic_modeling.mallet.Mallet._import_training_data
+### ::: lexos.topic_modeling.mallet.Mallet.train
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.topic_modeling.mallet.Mallet._setup_wordcloud
+### ::: lexos.topic_modeling.mallet.Mallet.infer
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.topic_modeling.mallet.Mallet._track_progress
+### ::: lexos.topic_modeling.mallet.Mallet.get_keys
     rendering:
       show_root_heading: true
       heading_level: 3
 
-## LLM Topic Labeling
-
-`llm_labeler` is an experimental module for using LLMs to automatically label topics produced by MALLET. It requires an existing MALLET `topic-keys.txt` file.
-
-### ::: lexos.topic_modeling.mallet.llm_labeler.label_mallet_topics
+### ::: lexos.topic_modeling.mallet.Mallet.get_top_docs
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.topic_modeling.mallet.llm_labeler.TopicLabelerConfig
+### ::: lexos.topic_modeling.mallet.Mallet.get_topic_term_probabilities
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.topic_modeling.mallet.llm_labeler.TopicLabelerConfig.__init__
+### ::: lexos.topic_modeling.mallet.Mallet.plot_termite
     rendering:
       show_root_heading: true
       heading_level: 3
 
-### ::: lexos.topic_modeling.mallet.llm_labeler.TopicLabelerClient
-    rendering:
-      show_root_heading: true
-      heading_level: 3
+## Backend implementation notes
 
-### ::: lexos.topic_modeling.mallet.llm_labeler.TopicLabelerClient.generate_label
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.topic_modeling.mallet.llm_labeler.TopicLabelerClient._call_openai_compatible
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.topic_modeling.mallet.llm_labeler.TopicLabelerClient._call_gemini
-    rendering:
-      show_root_heading: true
-      heading_level: 3
-
-### ::: lexos.topic_modeling.mallet.llm_labeler.TopicLabelerClient._call_claude
-    rendering:
-      show_root_heading: true
-      heading_level: 3
+The default `Mallet` class uses the Java MALLET backend, while the optional `PyRMallet` backend is exposed as `PyRMallet` and can be selected by passing `backend="pyrmallet"` to `Mallet` or by instantiating `PyRMallet` directly.

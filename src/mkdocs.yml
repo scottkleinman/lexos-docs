@@ -145,6 +145,7 @@ nav:
       - topic_modeling:
           - Overview: api/topic_modeling/index.md
           - mallet: api/topic_modeling/mallet.md
+          - llm_labeler: api/topic_modeling/llm_labeler.md
           - dfr_browser2: api/topic_modeling/dfr_browser2.md
       - topwords:
           - Overview: api/topwords/index.md
