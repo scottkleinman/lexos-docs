@@ -66,4 +66,3 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 ## Citation Information
 
 Kleinman, S., (2026). Lexos. v0.2.2 [https://github.com/scottkleinman/lexos](https://github.com/scottkleinman/lexos).
-
