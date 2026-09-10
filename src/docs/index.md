@@ -22,6 +22,15 @@ The Lexos Python library is designed to implement many common text analysis proc
 
 And more!
 
+### Changes in v0.2.2
+
+- Minor bug fixes to spaCy model CLI installation.
+
+### Changes in v0.2.1
+
+- Smoother spaCy model installation process.
+- A refactored `mallet` module now provides access to both Java and a [`pyrmallet`](https://github.com/mimno/RustMallet/tree/main/pyrmallet) backends. This allows users to install the Rust version of MALLET with `pip install pyrmallet`, rather than the more complicated procedure of installing downloading and installing MALLET and JDK.
+
 ## Changes in v0.2.0-beta
 
 - Performance optimizations and bug fixes througout.
