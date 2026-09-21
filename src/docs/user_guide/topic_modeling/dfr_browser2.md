@@ -39,7 +39,7 @@ b.serve()
 
 Calling the `serve()` method will start a localhost server and open the browser in your system's default web browser. The server runs in a subprocess, so you can continue working in your Python session while the browser is running. You can also start the server from the commmand line by running the `server.py` script in your DFR Browser 2 folder.
 
-<img src="images/dfr_browser2.png" alt="DFR Browser screen shot">
+<img src="../images/dfr_browser2.png" alt="DFR Browser screen shot">
 
 !!! Note
     DFR Browser 2 must be served from a server; otherwise it will not have full functionality. The `serve()` method checks if the specified port is available before starting the server. If the port is already in use, you'll receive a helpful error message with instructions on how to find and terminate the conflicting process, or you can specify a different port using the `port` parameter. The default port is 8000, which may conflict with Jupyter notebooks or other local servers.
