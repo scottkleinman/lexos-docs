@@ -343,7 +343,7 @@ fig.show()
 
 The `output_path` parameter saves to an HTML file.
 
-<iframe src="images/termite_plot.html" width="100%" height="600px" style="border: none;"></iframe>
+<iframe src="../images/termite_plot.html" width="100%" height="600px" style="border: none;"></iframe>
 
 ---
 
