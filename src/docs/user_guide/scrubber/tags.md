@@ -6,6 +6,7 @@ The `tag` component of Scrubber is a submodule containing functions for transfor
 
 Here is a list of the functions available in the `replace` component:
 
+- `extract_element`: Returns a single element, optionally identified by an attribute value.
 - `remove_attribute`: Removes all instances of an attribute in a specified element.
 - `remove_comments`: Removes all comments from the text.
 - `remove_doctype`: Removes the HTML document type declaration or XML declaration from the text.
@@ -119,7 +120,7 @@ The example below shows how the components can used in a Scrubber pipeline. The 
 ```python
 from functools import partial
 from lexos.scrubber import Scrubber
-from lexos.scrubber.replace import remove_element, replace_tag
+from lexos.scrubber.tags import remove_element, replace_tag
 
 # Create partial functions for specific transformations
 remove_p_by_class_value = partial(remove_element, attribute="class", value="remove")
@@ -135,3 +136,6 @@ scrubbed_text = scrubber.scrub(text)
 print(scrubbed_text)
 # <span>Hello world</span><span class="change">Hello, world!</span>
 ```
+
+!!! note
+    Using the `extract_element` function can be a good way to begin a pipeline. For instance, you can start by extracting the `body` element of an XML document and do any subsequent transformations on purely on the extracted content.

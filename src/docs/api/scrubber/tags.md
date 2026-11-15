@@ -37,6 +37,11 @@ A set of functions to replace or remove HTML/XML tags using [Beautiful Soup](htt
       show_root_heading: true
       heading_level: 3
 
+### ::: lexos.scrubber.tags.extract_element
+    rendering:
+      show_root_heading: true
+      heading_level: 3
+
 ### ::: lexos.scrubber.tags.remove_attribute
     rendering:
       show_root_heading: true
