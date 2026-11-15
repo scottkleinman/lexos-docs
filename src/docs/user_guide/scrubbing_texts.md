@@ -44,7 +44,7 @@ It is also possible to load the entire registry, called `scrubber_components`, a
 
 ```python
 # Load the Scrubber components registry
-from lexos.scrubber import scrubber_components
+from lexos.scrubber.registry import scrubber_components
 
 # Load a single component from the registry
 lower_case = scrubber_components.get("lower_case")
@@ -54,7 +54,7 @@ In addition, Lexos provides a `get_components()` helper function to load multipl
 
 ```python
 # Load the helper functions
-from lexos.scrubber import get_components
+from lexos.scrubber.registry import get_components
 
 # Load multiple components using the helper function
 punctuation, remove_digits = get_components("punctuation", "digits")
@@ -107,8 +107,8 @@ When scrubbing texts, you may need to apply multiple Scrubber components in a pa
 To make a pipeline with the `make_pipeline()` function, import the function and pass your components to it in the order you want them to be implemented.
 
 ```python
-from lexos.scrubber import make_pipeline
-from lexos.scrubber import get_components
+from lexos.scrubber.pipeline import make_pipeline
+from lexos.scrubber.registry import get_components
 
 lower_case, punctuation = get_components("lower_case", "punctuation")
 
@@ -125,7 +125,7 @@ Many Scrubber functions take additional keyword arguments. To pass them to a pip
 
 ```python
 from functools import partial
-from lexos.scrubber import get_components
+from lexos.scrubber.registry import get_components
 
 lower_case, punctuation, remove_digits = get_components("lower_case", "punctuation", "digits")
 
