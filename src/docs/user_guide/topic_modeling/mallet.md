@@ -197,6 +197,7 @@ mallet_model = Mallet(model_dir="mallet_model")
 
 # View the previously-generated metadata for the trained model
 mallet_model.metadata
+```
 
 ---
 
